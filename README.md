@@ -42,7 +42,7 @@
 - Changelog        : Displays the change history.
 - Exit Buildware   : Exits the tool.
 - Tool Information : Displays information about the tool.
-- Tokens File      : Open the tokens file.
+- Extras File      : Opens Discord Tokens file, Webhooks file, and Extras folder.
 ```
 
 ```yaml
