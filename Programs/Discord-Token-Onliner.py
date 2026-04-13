@@ -18,11 +18,12 @@ Connection()
 try:
     token = ChoiceToken()
     
-    print(f"\n{INFO} Status Options:")
-    print(f"{PREFIX}01{SUFFIX} Online")
-    print(f"{PREFIX}02{SUFFIX} Idle")
-    print(f"{PREFIX}03{SUFFIX} Do Not Disturb")
-    print(f"{PREFIX}04{SUFFIX} Invisible\n")
+    Scroll(f"""
+ {PREFIX}01{SUFFIX} Online
+ {PREFIX}02{SUFFIX} Idle
+ {PREFIX}03{SUFFIX} Do Not Disturb
+ {PREFIX}04{SUFFIX} Invisible
+""")
     
     status_choice = input(f"{INPUT} Status {red}->{reset} ").strip().lstrip("0")
     
@@ -33,10 +34,10 @@ try:
         "4": "invisible"
     }
     
-    if status_choice in status_map:
-        status = status_map[status_choice]
-    else:
-        status = "online"
+    if status_choice not in status_map:
+        ErrorChoice()
+
+    status = status_map[status_choice]
     
     ws = websocket.WebSocket()
     ws.settimeout(30)

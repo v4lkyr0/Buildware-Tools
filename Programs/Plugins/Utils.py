@@ -18,10 +18,10 @@ try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
         sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 except Exception as e:
-    print('Required Python modules for Buildware-Tool are not installed. Please run "Setup.py" to install them.')
+    print('Required Python modules for Buildware-Tools are not installed. Please run "Setup.py" to install them.')
     input(f"Error: {e}")
 
-username_webhook = "Buildware-Tool"
+username_webhook = "Buildware-Tools"
 avatar_webhook = "https://i.imgur.com/7Gu71Gc.png"
 color_embed = 0x880000
 
@@ -36,6 +36,7 @@ PREFIX = f"{red}[{white}"
 SUFFIX = f"{red}]{white}"
 PREFIX1 = f"{red}{{{white}"
 SUFFIX1 = f"{red}}}{white}"
+SUFFIXP = f"{red}}}{yellow}"
 
 YESORNO = f"{red}({white}y/n{red}){white}"
 INPUT = f"{PREFIX}>{SUFFIX}"
@@ -47,7 +48,7 @@ LOADING = f"{PREFIX}~{SUFFIX}"
 tool_path = os.path.dirname(os.path.abspath(__file__)).split("Programs\\")[0].split("Programs/")[0].strip()
 
 try:
-    username_pc = "user"
+    username_pc = os.getlogin()
 except:
     username_pc = "user"
 
@@ -70,7 +71,7 @@ def Connection():
 
 data_file = os.path.join(tool_path, "Programs", "Extras", "Config.json")
 github_repo_owner = "v4lkyr0"
-github_repo_name = "Buildware-Tool"
+github_repo_name = "Buildware-Tools"
 
 def load_data():
     if os.path.exists(data_file):
@@ -79,7 +80,7 @@ def load_data():
                 return json.load(f)
         except:
             pass
-    return {"webhooks": [], "tokens": [], "bots": [], "github_star": "", "page": 1}
+    return {"webhooks": [], "tokens": [], "bots": [], "cookies": [], "github_star": "", "page": 1}
 
 def save_data(data):
     with open(data_file, "w", encoding="utf-8") as f:
@@ -109,7 +110,7 @@ def CheckGithubStar():
             if r.status_code == 200:
                 username = r.json().get("login", "")
                 if _is_stargazer(username.lower(), headers):
-                    print(f"{SUCCESS} Verified as: {red}{username}{reset}", reset)
+                    print(f"{SUCCESS} Verified as:{red} {username}{reset}", reset)
                     os.environ["BUILDWARE_STAR_VERIFIED"] = "1"
                     time.sleep(1)
                     return True
@@ -128,7 +129,7 @@ def CheckGithubStar():
     print(f"\n{INFO} This feature requires you to star the GitHub repository.", reset)
     print(f"{INFO} {red}{github_url}{reset}", reset)
     print(f"\n{INFO} You need a GitHub Personal Access Token to verify your identity.", reset)
-    print(f"{INFO} Create one at: {red}https://github.com/settings/tokens{reset}", reset)
+    print(f"{INFO} Create one at:{red} https://github.com/settings/tokens{reset}", reset)
     print(f"{INFO} No scopes/permissions needed, just generate and paste it.\n", reset)
 
     pat = input(f"{INPUT} GitHub Token {red}->{reset} ").strip()
@@ -147,7 +148,7 @@ def CheckGithubStar():
             sys.exit()
 
         username = r.json().get("login", "Unknown")
-        print(f"{SUCCESS} Authenticated as: {red}{username}{reset}", reset)
+        print(f"{SUCCESS} Authenticated as:{red} {username}{reset}", reset)
 
         print(f"{LOADING} Checking star..", reset)
         if _is_stargazer(username.lower(), headers):
@@ -188,7 +189,7 @@ def _is_stargazer(username, headers):
         page += 1
 
 def Update():
-    url = f"https://api.github.com/repos/v4lkyr0/Buildware-Tool/releases/latest"
+    url = f"https://api.github.com/repos/v4lkyr0/Buildware-Tools/releases/latest"
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -279,6 +280,11 @@ def ErrorWebhook():
 
 def ErrorBot():
     print(f"{ERROR} Invalid Bot Token!", reset)
+    time.sleep(2)
+    Reset()
+
+def ErrorCookie():
+    print(f"{ERROR} Invalid Roblox Cookie!", reset)
     time.sleep(2)
     Reset()
 
@@ -396,6 +402,28 @@ def SaveBot(bot_token):
         return True
     return False
 
+def CheckCookie(cookie):
+    try:
+        session = requests.Session()
+        session.cookies[".ROBLOSECURITY"] = cookie
+        response = session.get("https://users.roblox.com/v1/users/authenticated", timeout=5)
+        if response.status_code == 200:
+            return True
+        else:
+            return False
+    except:
+        return None
+
+def SaveCookie(cookie):
+    result = CheckCookie(cookie)
+    if result is True:
+        data = load_data()
+        if cookie not in data.get("cookies", []):
+            data.setdefault("cookies", []).append(cookie)
+            save_data(data)
+        return True
+    return False
+
 def ChoiceWebhook():
     data = load_data()
     path_name = f'{red}"{white}Programs/Extras/Config.json{red}"{white}'
@@ -442,12 +470,16 @@ def ChoiceWebhook():
         masked_webhook = token_webhook[:30] + ".." if len(token_webhook) > 30 else token_webhook
 
         if num in valid_webhooks:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Valid{white}   | Webhook:{red} {masked_webhook}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Valid{white}   | Webhook:{red} {masked_webhook}", reset)
         else:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Invalid{white} | Webhook:{red} {masked_webhook}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Invalid{white} | Webhook:{red} {masked_webhook}", reset)
 
     print(f'\n{INFO} To add more Webhooks, open {path_name}.', reset)
-    choice = int(input(f"{INPUT} Choice {red}->{reset} ").strip())
+
+    try:
+        choice = int(input(f"{INPUT} Choice {red}->{reset} ").strip())
+    except ValueError:
+        ErrorChoice()
 
     if choice not in webhooks:
         ErrorChoice()
@@ -502,12 +534,16 @@ def ChoiceToken():
         masked_token = tok3n[:30] + ".." if len(tok3n) > 30 else tok3n
 
         if num in valid_tokens:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Valid{white}   | Token:{red} {masked_token}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Valid{white}   | Token:{red} {masked_token}", reset)
         else:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Invalid{white} | Token:{red} {masked_token}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Invalid{white} | Token:{red} {masked_token}", reset)
 
     print(f'\n{INFO} To add more Tokens, open {path_name}.', reset)
-    choice = int(input(f"{INPUT} Choice {red}->{reset} ").strip())
+
+    try:
+        choice = int(input(f"{INPUT} Choice {red}->{reset} ").strip())
+    except ValueError:
+        ErrorChoice()
 
     if choice not in tokens:
         ErrorChoice()
@@ -548,9 +584,9 @@ def ChoiceMultiToken():
         masked_token = tok3n[:30] + ".." if len(tok3n) > 30 else tok3n
 
         if num in valid_tokens:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Valid{white}   | Token:{red} {masked_token}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Valid{white}   | Token:{red} {masked_token}", reset)
         else:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Invalid{white} | Token:{red} {masked_token}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Invalid{white} | Token:{red} {masked_token}", reset)
 
     print(f'\n {INFO} To add more Tokens, open {path_name}.')
     
@@ -628,9 +664,9 @@ def ChoiceMultiWebhook():
         masked_webhook = token_webhook[:30] + ".." if len(token_webhook) > 30 else token_webhook
 
         if num in valid_webhooks:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Valid{white}   | Webhook:{red} {masked_webhook}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Valid{white}   | Webhook:{red} {masked_webhook}", reset)
         else:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Invalid{white} | Webhook:{red} {masked_webhook}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Invalid{white} | Webhook:{red} {masked_webhook}", reset)
 
     print(f'\n{INFO} To add more Webhooks, open {path_name}.')
     
@@ -721,12 +757,16 @@ def ChoiceBot():
         masked_bot = bot[:30] + ".." if len(bot) > 30 else bot
 
         if num in valid_bots:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Valid{white}   | Bot:{red} {masked_bot}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Valid{white}   | Bot:{red} {masked_bot}", reset)
         else:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Invalid{white} | Bot:{red} {masked_bot}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Invalid{white} | Bot:{red} {masked_bot}", reset)
 
     print(f'\n{INFO} To add more Bots, open {path_name}.', reset)
-    choice = int(input(f"{INPUT} Choice {red}->{reset} ").strip())
+
+    try:
+        choice = int(input(f"{INPUT} Choice {red}->{reset} ").strip())
+    except ValueError:
+        ErrorChoice()
 
     if choice not in bots:
         ErrorChoice()
@@ -767,9 +807,9 @@ def ChoiceMultiBot():
         masked_bot = bot[:30] + ".." if len(bot) > 30 else bot
 
         if num in valid_bots:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Valid{white}   | Bot:{red} {masked_bot}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Valid{white}   | Bot:{red} {masked_bot}", reset)
         else:
-            print(f"{PREFIX}{num:02d}{SUFFIX} Status: {red}Invalid{white} | Bot:{red} {masked_bot}", reset)
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Invalid{white} | Bot:{red} {masked_bot}", reset)
 
     print(f'\n{INFO} To add more Bots, open {path_name}.')
     
@@ -816,3 +856,148 @@ def ChoiceMultiBot():
                 ErrorNumber()
     
     return selected_bots
+
+def ChoiceCookie():
+    data = load_data()
+    path_name = f'{red}"{white}Programs/Extras/Config.json{red}"{white}'
+
+    cookies_list = [c for c in data.get("cookies", []) if c.strip()]
+
+    cookies       = {}
+    valid_cookies = {}
+
+    for i, ck in enumerate(cookies_list, 1):
+        cookies[i] = ck
+        if CheckCookie(ck):
+            valid_cookies[i] = ck
+
+    if not cookies:
+        print(f"{INFO} No Roblox Cookie found in {path_name}!", reset)
+        while True:
+            new_cookie = input(f"{INPUT} Roblox Cookie {red}->{reset} ").strip()
+            if CheckCookie(new_cookie):
+                data.setdefault("cookies", []).append(new_cookie)
+                save_data(data)
+                print(f"{SUCCESS} Roblox Cookie added to {path_name}.", reset)
+                time.sleep(1)
+                return new_cookie
+            else:
+                ErrorCookie()
+
+    if not valid_cookies:
+        print(f"{INFO} No valid Roblox Cookie found in {path_name}!", reset)
+        while True:
+            new_cookie = input(f"{INPUT} Roblox Cookie {red}->{reset} ").strip()
+            if CheckCookie(new_cookie):
+                data.setdefault("cookies", []).append(new_cookie)
+                save_data(data)
+                print(f"{SUCCESS} Roblox Cookie added to {path_name}.", reset)
+                time.sleep(1)
+                return new_cookie
+            else:
+                ErrorCookie()
+
+    print()
+    for num, ck in cookies.items():
+        masked_cookie = ck[:30] + ".." if len(ck) > 30 else ck
+
+        if num in valid_cookies:
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Valid{white}   | Cookie:{red} {masked_cookie}", reset)
+        else:
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Invalid{white} | Cookie:{red} {masked_cookie}", reset)
+
+    print(f'\n{INFO} To add more Roblox Cookies, open {path_name}.', reset)
+
+    try:
+        choice = int(input(f"{INPUT} Choice {red}->{reset} ").strip())
+    except ValueError:
+        ErrorChoice()
+
+    if choice not in cookies:
+        ErrorChoice()
+
+    if choice in valid_cookies:
+        return valid_cookies[choice]
+    else:
+        ErrorCookie()
+
+def ChoiceMultiCookie():
+    data = load_data()
+    path_name = f'{red}"{white}Programs/Extras/Config.json{red}"{white}'
+
+    cookies_list = [c for c in data.get("cookies", []) if c.strip()]
+
+    cookies       = {}
+    valid_cookies = {}
+
+    for i, ck in enumerate(cookies_list, 1):
+        cookies[i] = ck
+        if CheckCookie(ck):
+            valid_cookies[i] = ck
+
+    if not cookies:
+        print(f"{INFO} No Roblox Cookie found in {path_name}!", reset)
+        print(f"{ERROR} Please add Roblox Cookies to {path_name}.", reset)
+        time.sleep(2)
+        Reset()
+
+    if not valid_cookies:
+        print(f"{INFO} No valid Roblox Cookie found in {path_name}!", reset)
+        print(f"{ERROR} Please add valid Roblox Cookies to {path_name}.", reset)
+        time.sleep(2)
+        Reset()
+
+    print()
+    for num, ck in cookies.items():
+        masked_cookie = ck[:30] + ".." if len(ck) > 30 else ck
+
+        if num in valid_cookies:
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Valid{white}   | Cookie:{red} {masked_cookie}", reset)
+        else:
+            print(f"{PREFIX}{num:02d}{SUFFIX} Status:{red} Invalid{white} | Cookie:{red} {masked_cookie}", reset)
+
+    print(f'\n{INFO} To add more Roblox Cookies, open {path_name}.')
+    
+    while True:
+        try:
+            num_cookies = int(input(f"{INPUT} Number {red}->{reset} ").strip())
+            
+            if num_cookies <= 0:
+                ErrorNumber()
+            
+            if num_cookies > len(valid_cookies):
+                print(f"{ERROR} Not enough valid Roblox Cookies!", reset)
+                time.sleep(2)
+                Reset()
+            
+            break
+        except ValueError:
+            ErrorNumber()
+    
+    selected_cookies = []
+    
+    for i in range(num_cookies):
+        while True:
+            try:
+                choice = int(input(f"{INPUT} Cookie {i + 1} {red}->{reset} ").strip())
+                
+                if choice not in cookies:
+                    ErrorChoice()
+                
+                if choice not in valid_cookies:
+                    print(f"{ERROR} Invalid Roblox Cookie!", reset)
+                    time.sleep(2)
+                    Reset()
+                
+                if valid_cookies[choice] not in selected_cookies:
+                    selected_cookies.append(valid_cookies[choice])
+                    break
+                else:
+                    print(f"{ERROR} Roblox Cookie already selected!", reset)
+                    Continue()
+                    Reset()
+                    
+            except ValueError:
+                ErrorNumber()
+    
+    return selected_cookies

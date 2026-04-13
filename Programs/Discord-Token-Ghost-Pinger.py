@@ -16,9 +16,9 @@ Connection()
 try:
     token = ChoiceToken()
     
-    message = input(f"{INPUT} Message {red}({white}optional{red}) ->{reset} ").strip()
+    message = input(f"{INPUT} Message {red}->{reset} ").strip()
 
-    delay_delete = input(f"{INPUT} Delay Before Delete {red}({white}seconds{red}) ->{reset} ").strip()
+    delay_delete = input(f"{INPUT} Delay Before Delete {red}->{reset} ").strip()
     try:
         delay_delete = float(delay_delete)
         if delay_delete < 0:
@@ -26,7 +26,7 @@ try:
     except:
         delay_delete = 0.1
 
-    delay_between = input(f"{INPUT} Delay Between Pings {red}({white}seconds{red}) ->{reset} ").strip()
+    delay_between = input(f"{INPUT} Delay Between Pings {red}->{reset} ").strip()
     try:
         delay_between = float(delay_between)
         if delay_between < 0:

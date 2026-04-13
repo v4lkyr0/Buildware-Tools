@@ -17,7 +17,7 @@ CheckGithubStar()
 
 try:
     token = ChoiceToken()
-    message = input(f"{INPUT} Message {red}->{reset} ")
+    message = input(f"{INPUT} Message {red}->{reset} ").strip()
     if not message:
         ErrorInput()
 
@@ -52,7 +52,7 @@ try:
                     print(f"{ERROR} Status:{red} Error   {white}| Username:{red} {user}", reset)
                 time.sleep(0.1)
 
-    channel_ids = requests.get("https://discord.com/api/v9/users/@me/channels", headers={'Authorization': token}).json()
+    channel_ids = requests.get("https://discord.com/api/v9/users/@me/channels", headers={'Authorization': token, 'User-Agent': RandomUserAgents()}).json()
 
     if not channel_ids:
         print(f"{ERROR} No Dm found!", reset)

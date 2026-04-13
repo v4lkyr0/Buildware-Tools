@@ -15,10 +15,10 @@ Connection()
 
 try:
     token          = ChoiceToken()
-    channel_id     = input(f"{INPUT} Channel Id {red}->{reset} ")
-    message        = input(f"{INPUT} Message {red}->{reset} ")
+    channel_id     = input(f"{INPUT} Channel Id {red}->{reset} ").strip()
+    message        = input(f"{INPUT} Message {red}->{reset} ").strip()
     
-    message_limit_input = input(f"{INPUT} Total Messages {red}({white}0 for unlimited{red}){white} {red}->{reset} ").strip()
+    message_limit_input = input(f"{INPUT} Total Messages {red}->{reset} ").strip()
     try:
         message_limit = int(message_limit_input)
         if message_limit < 0:
@@ -26,10 +26,14 @@ try:
     except ValueError:
         message_limit = 0
     
-    threads_number = int(input(f"{INPUT} Threads {red}->{reset} "))
+    try:
+        threads_number = int(input(f"{INPUT} Threads {red}->{reset} ").strip())
+    except ValueError:
+        ErrorNumber()
+
     if not channel_id or not message:
         ErrorInput()
-    elif not threads_number or threads_number <= 0:
+    if threads_number <= 0:
         ErrorNumber()
 
     print(f"{LOADING} Starting Token Spammer..", reset)

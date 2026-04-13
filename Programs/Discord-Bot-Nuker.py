@@ -17,22 +17,20 @@ CheckGithubStar()
 try:
     bot_token = ChoiceBot()
     
-    print()
-    print(f"{INFO} Nuke Options:")
-    print()
-    print(f"{white}    [{red}01{white}] {red}->{white} Delete All Channels")
-    print(f"{white}    [{red}02{white}] {red}->{white} Ban All Members")
-    print(f"{white}    [{red}03{white}] {red}->{white} Kick All Members")
-    print(f"{white}    [{red}04{white}] {red}->{white} Delete All Roles")
-    print(f"{white}    [{red}05{white}] {red}->{white} Leave All Servers")
-    print(f"{white}    [{red}06{white}] {red}->{white} Full Nuke {red}({white}All of the above{red}){white}")
-    print()
+    Scroll(f"""
+ {PREFIX}01{SUFFIX} Delete All Channels
+ {PREFIX}02{SUFFIX} Ban All Members
+ {PREFIX}03{SUFFIX} Kick All Members
+ {PREFIX}04{SUFFIX} Delete All Roles
+ {PREFIX}05{SUFFIX} Leave All Servers
+ {PREFIX}06{SUFFIX} Full Nuke
+""")
     
     choice = input(f"{INPUT} Choice {red}->{reset} ").strip().lstrip("0")
     if choice not in ["1", "2", "3", "4", "5", "6"]:
         ErrorChoice()
     
-    delay = input(f"{INPUT} Delay Between Actions {red}({white}seconds{red}){white} {red}->{reset} ").strip()
+    delay = input(f"{INPUT} Delay Between Actions {red}->{reset} ").strip()
     try:
         delay = float(delay)
         if delay < 0.1:

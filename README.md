@@ -1,9 +1,9 @@
 <div align="center">
 
-# <img src="Programs/Images/BuildwareLogo.png" width="6%"> Buildware-Tool <img src="Programs/Images/BuildwareLogo.png" width="6%">
+# Buildware-Tools
 
 <p>
-  <strong>All-in-one Discord utility suite for tokens, webhooks & bots</strong>
+  <strong>All-in-one multitool — Discord, OSINT, Network, Roblox & more</strong><br>
 </p>
 
 <p>
@@ -12,8 +12,14 @@
 <img src="https://img.shields.io/github/repo-size/v4lkyr0/Buildware-Tool?label=Size&color=a80505">
 </p>
 
-<img src="Programs/Images/BuildwareTool-1.png">
-<img src="Programs/Images/BuildwareTool-2.png">
+<div align="center">
+  <img src="Programs/Images/BuildwareTools-1.png" width="45%">
+  <img src="Programs/Images/BuildwareTools-2.png" width="45%">
+</div>
+
+<div align="center">
+  <img src="Programs/Images/BuildwareTools-3.png" width="50%">
+</div>
 
 </div>
 
@@ -21,92 +27,146 @@
 
 ---
 
-## Warning
+## 💖 Support
 
-**DO NOT** download Buildware-Tool from unofficial sources. **Only use** this official Github repository to avoid malware, scams, or compromised versions. 
+If you like **Buildware-Tools** and want to support the project, you can leave a star on the repository. It helps a lot and shows interest for future updates.
 
-<br>
-
----
-
-## About
-
-**Buildware-Tool** is a Discord API Tool created by **myself (v4lkyr0)**. It comes with many features for **tokens, webhooks, bots**, and more. **All in one place**! The tool works on **Windows & Linux**, and you don't have to worry about **malware or any other bad stuff**. Buildware-Tool will be **updated regularly**, so stay tuned and **enjoy**! :D
+<div align="center">
+  <img src="Programs/Images/Star.gif" width="70%">
+</div>
 
 <br>
 
 ---
 
-## Features
+## ⚠️ Warning
 
-```yaml
-- Changelog        : Displays the change history.
-- Exit Buildware   : Exits the tool.
-- Tool Information : Displays information about the tool.
-- Extras File      : Opens Config file and Extras folder.
-- Next Page        : Navigate to the next page of features.
-- Back Page        : Navigate to the previous page of features.
+**DO NOT** download Buildware-Tools from unofficial sources. **Only use** this official GitHub repository to avoid malware, scams, or compromised versions.
+
+<br>
+
+---
+
+## 📌 About
+
+**Buildware-Tools** is a powerful multitool built by **v4lkyr0 (myself)**, designed to handle everything from **Discord automation** and **OSINT reconnaissance** to **network diagnostics**, **cryptography utilities**, and **Roblox lookups** — all from a single terminal interface. It works natively on **Windows & Linux**, requires no external setup beyond Python, and is **regularly updated** with new features and improvements.
+
+<br>
+
+---
+
+## ✨ Features
+
+> Features marked with `[⭐]` are the **most powerful** and require a **GitHub star to unlock**.
+
+```
+🛠️ Buildware-Tools
+│
+├── 🗺️ Navigation (6)
+│   ├── Changelog                       : Displays the change history
+│   ├── Feedback                        : Send feedback to the developer
+│   ├── Tool Information                : Displays information about the tool
+│   ├── Extras File                     : Opens Config file and Extras folder
+│   ├── Next Page                       : Navigate to the next page of features
+│   └── Back Page                       : Navigate to the previous page of features
+│
+├── 🔍 OSINT (10)
+│   │
+│   ├── Ip Lookup                       : Geolocates an IP address with ISP and AS details
+│   ├── Dns Lookup                      : Resolves DNS records for a domain
+│   ├── Whois Lookup                    : Retrieves WHOIS registration data for a domain
+│   ├── Subdomain Finder                : [⭐] Discovers subdomains using certificate transparency
+│   ├── Header Analyzer                 : Inspects HTTP response headers of a website
+│   ├── Website Detector                : Detects technologies used by a website
+│   ├── Username Lookup                 : [⭐] Searches a username across multiple platforms
+│   ├── Email Checker                   : Validates an email address
+│   ├── Email Breach Checker            : [⭐] Checks if an email has been in data breaches
+│   └── Phone Lookup                    : Retrieves carrier and location data for a phone number
+│
+├── 🌐 Network (10)
+│   │
+│   ├── Port Scanner                    : [⭐] Scans a target for open ports and services
+│   ├── Ip Pinger                       : Pings a target with detailed RTT statistics
+│   ├── Traceroute                      : Traces the network route to a target
+│   ├── Reverse Dns                     : Performs reverse DNS lookup on an IP address
+│   ├── Mac Lookup                      : Identifies the vendor of a MAC address
+│   ├── Interface Information           : Lists all network interfaces with detailed stats
+│   ├── Website Status                  : Checks if a website is online and responsive
+│   ├── Ssl Checker                     : Inspects SSL/TLS certificate details
+│   ├── Proxy Checker                   : Tests if a proxy is working and anonymous
+│   └── Wifi Passwords                  : [⭐] Retrieves saved Wi-Fi passwords from the system
+│
+├── 🧰 Utilities (10)
+│   │
+│   ├── Password Generator              : Generates secure random passwords with options
+│   ├── Temp Mail                       : [⭐] Creates disposable email addresses on the fly
+│   ├── System Information              : Displays detailed hardware and software info
+│   ├── Hash Generator                  : Generates hashes using multiple algorithms
+│   ├── Hash Identifier                 : Identifies the algorithm of an unknown hash
+│   ├── File Hasher                     : Computes the hash of any local file
+│   ├── Base64 Converter                : Encodes and decodes Base64 strings
+│   ├── Caesar Cipher                   : Encrypts and decrypts text with Caesar shift
+│   ├── Text Converter                  : Converts text between various formats
+│   └── Url Analyzer                    : Analyzes URLs for headers, redirects and content
+│
+├── 👾 Discord (30)
+│   │
+│   ├── Server
+│   │   ├── Server Information          : Shows detailed information about a server
+│   │   ├── Server Editor               : Edits server settings and configuration
+│   │   ├── Server Scraper              : [⭐] Scrapes members from a server
+│   │   ├── Server Cloner               : [⭐] Clones a server's structure, channels and roles
+│   │   ├── Server Ban All              : [⭐] Bans all members from a server
+│   │   ├── Server Kick All             : Kicks all members from a server
+│   │   ├── Server Unban All            : Unbans all banned members from a server
+│   │   └── Server Mute All             : Mutes all members in a server
+│   │
+│   ├── Bot
+│   │   ├── Bot Nuker                   : [⭐] Performs destructive actions on a server via a bot
+│   │   └── Bot Raider                  : Spams messages across all channels via a bot
+│   │
+│   ├── Token
+│   │   ├── Token Information           : Displays sensitive information about a token
+│   │   ├── Token Login                 : Log in to Discord using a token via browser
+│   │   ├── Token Joiner                : Makes a token join a server
+│   │   ├── Token Leaver                : Makes a token leave a server
+│   │   ├── Token Mass Dm               : [⭐] Sends mass private messages to all DMs
+│   │   ├── Token Spammer               : Sends mass messages in a channel
+│   │   ├── Token Ghost Pinger          : Sends mentions and deletes them instantly
+│   │   ├── Token Nuker                 : [⭐] Performs destructive actions on the account
+│   │   ├── Token Disabler              : Disables a token permanently
+│   │   ├── Token Onliner               : Sets a token's status to online via gateway
+│   │   ├── Token Image Changer         : Changes the account's profile picture or banner
+│   │   ├── Token Bio Changer           : Changes the account's bio
+│   │   ├── Token Status Changer        : Changes the custom status of the account
+│   │   └── Token Generator             : Generates and checks random tokens
+│   │
+│   ├── Webhook
+│   │   ├── Webhook Spammer             : Spams a webhook with messages
+│   │   └── Webhook Information         : Shows detailed information about a webhook
+│   │
+│   └── Other
+│       ├── Embed Creator               : Creates and sends custom Discord embeds
+│       ├── Injection Cleaner           : Detects and removes Discord client injections
+│       ├── Vanity Url Sniper           : Monitors and snipes custom vanity URLs
+│       └── Snowflake Decoder           : Decodes any Discord snowflake ID
+│
+└── 🎮 Roblox (6)
+    ├── Cookie Login                    : [⭐] Log in to Roblox using a cookie via browser
+    ├── Cookie Information              : [⭐] Displays detailed account info from a cookie
+    ├── Id Information                  : Looks up a Roblox user by their ID
+    ├── Username Information            : Looks up a Roblox user by their username
+    ├── Group Information               : Shows detailed information about a Roblox group
+    └── Game Information                : Shows detailed information about a Roblox game
 ```
 
-```yaml
-- Discord Token Information     : Displays sensitive information about a token.
-- Discord Token Login           : Log in to Discord using a token.
-- Discord Token Onliner         : Set a token's status to online.
-- Discord Token Generator       : Generates random token.
-- Discord Token Grabber Builder : Builds a token grabber executable [⭐]
-- Discord Token Disabler        : Disables a token.
-- Discord Token Nuker           : Performs destructive actions on the account [⭐]
-- Discord Token Joiner          : Makes a token join a server.
-- Discord Token Leaver          : Makes a token leave a server.
-- Discord Token Spammer         : Sends mass messages in a channel.
-- Discord Server Information    : Shows detailed information about a server.
-- Discord Server Scraper        : Scrapes members from a server [⭐]
-- Discord Server Cloner         : Clones a server's structure and settings [⭐]
-- Discord Server Editor         : Edits server settings and configuration.
-- Discord Vanity Url Sniper     : Snipes custom vanity URLs [⭐]
-- Discord Invite Generator      : Generates server invitations.
-- Discord Invite Tracker        : Tracks invitations and their usage.
-- Discord Embed Creator         : Creates custom Discord embeds.
-- Discord Snowflake Decoder     : Decodes a Discord ID.
-- Discord Mass Dm               : Sends mass private messages [⭐]
-- Discord Webhook Information   : Shows information about a webhook.
-- Discord Webhook Generator     : Generates webhooks.
-- Discord Webhook Spammer       : Spams a webhook with messages.
-- Discord Webhook Deleter       : Deletes a webhook.
-- Discord Bot Information       : Shows detailed information about a bot.
-- Discord Bot Nuker             : Performs destructive actions via a bot [⭐]
-- Discord Bot Raider            : Uses a bot to raid servers [⭐]
-- Discord Bot Id To Invite      : Gets an invitation link from a bot's ID.
-- Discord Id To Token           : Tries to brute force from a user ID.
-- Discord Ghost Pinger          : Sends mentions users and deletes them instantly.
-- Discord Token Pfp Changer     : Changes the account's profile picture.
-- Discord Token Banner Changer  : Changes the account's banner.
-- Discord Token Bio Changer     : Changes the account's bio.
-- Discord Token Pronoun Changer : Changes the account's pronouns.
-- Discord Token Theme Changer   : Changes Discord's theme.
-- Discord Token Status Changer  : Changes the custom status of the account.
-- Discord Token House Changer   : Changes the HypeSquad house of the account.
-- Discord Injection Builder     : Builds a Discord injection [⭐]
-- Discord Injection Cleaner     : Cleans Discord injection files.
-- Discord Server Ban All        : Bans all members from a server [⭐]
-- Discord Server Kick All       : Kicks all members from a server.
-- Discord Server Unban All      : Unbans all banned members from a server.
-- Discord Server Mute All       : Mutes all members in a server.
-- Discord Delete Friends        : Deletes all friends from the account.
-- Discord Block Friends         : Blocks all friends from the account.
-- Discord Unblock Users         : Unblocks all blocked users.
-- Discord Delete Dm             : Deletes all private messages.
-```
-
 <br>
 
 ---
 
-## Installation
+## 📦 Installation
 
-Download the latest Buildware-Tool version [here](https://github.com/v4lkyr0/Buildware-Tool/archive/refs/heads/Buildware-Tool.zip)
-
-<p>
+Download the latest version [here](https://github.com/v4lkyr0/Buildware-Tools/archive/refs/heads/Buildware-Tools.zip)
 
 ```
 1. Download the .zip folder.
@@ -114,21 +174,20 @@ Download the latest Buildware-Tool version [here](https://github.com/v4lkyr0/Bui
 3. Run "Setup.py".
 4. Enjoy!
 ```
+
 **Or via Git:**
+
 ```
-1. Open a terminal.
-2. Type: git clone https://github.com/v4lkyr0/Buildware-Tool.git
-3. Type: cd Buildware-Tool
-4. Type: git pull
-5. Type: "python Setup.py" or "python3 Setup.py"
-6. Enjoy!
+git clone https://github.com/v4lkyr0/Buildware-Tools.git
+cd Buildware-Tools
+python Setup.py
 ```
 
 <br>
 
 ---
 
-## Requirements
+## 📋 Requirements
 
 - **Python 3.8 or higher.**
 - **Windows or Linux OS.**
@@ -136,7 +195,15 @@ Download the latest Buildware-Tool version [here](https://github.com/v4lkyr0/Bui
 
 <br>
 
-## Donation
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://api.star-history.com/chart?repos=v4lkyr0/Buildware-Tools&type=date&legend=top-left)](https://www.star-history.com/?repos=v4lkyr0%2FBuildware-Tools&type=date&legend=top-left)
+
+---
+
+## 💸 Donation
 
 ```yaml
 - Ethereum : 0xef1d65ff652e9087ebd7af400122caebb35fdf2b
@@ -147,11 +214,11 @@ Download the latest Buildware-Tool version [here](https://github.com/v4lkyr0/Bui
 
 ---
 
-## Disclaimer
+## ⚖️ Disclaimer
 
-> **Buildware-Tool is strictly for educational & security research purposes.**
+> **Buildware-Tools is strictly for educational & security research purposes.**
 >
-> - Use this tool **only on your own** token, bots, webhooks & servers.
+> - Use this tool **only on yourself**.
 > - Any malicious or unauthorized use is **prohibited & illegal**.
 > - I am **not responsible** for misuse.
 

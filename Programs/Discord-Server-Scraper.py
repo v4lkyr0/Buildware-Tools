@@ -18,7 +18,7 @@ CheckGithubStar()
 try:
     token = ChoiceToken()
     
-    server_id = input(f"{INPUT} Server ID {red}->{reset} ")
+    server_id = input(f"{INPUT} Server ID {red}->{reset} ").strip()
     if not server_id:
         ErrorInput()
     
@@ -85,21 +85,27 @@ try:
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"Server_{guild_data.get('name', server_id)}_{timestamp}.json"
-    output_path = os.path.join(tool_path, "Programs", "Output", filename)
+    output_path = os.path.join(tool_path, "Programs", "Output", "DiscordServerScraper", filename)
     
-    os.makedirs(os.path.join(tool_path, "Programs", "Output"), exist_ok=True)
+    os.makedirs(os.path.join(tool_path, "Programs", "Output", "DiscordServerScraper"), exist_ok=True)
     
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(scrape_data, f, indent=4, ensure_ascii=False)
     
     Scroll(f"""
-{INFO} Name        {red}:{white} {red}{guild_data.get('name')}
-{INFO} Members     {red}:{white} {red}{len(members)}
-{INFO} Channels    {red}:{white} {red}{len(channels)}
-{INFO} Roles       {red}:{white} {red}{len(roles)}
-{INFO} File        {red}:{white} {red}{filename}
-    """)
+ {INFO} Name     :{red} {guild_data.get('name')}
+ {INFO} Members  :{red} {len(members)}
+ {INFO} Channels :{red} {len(channels)}
+ {INFO} Roles    :{red} {len(roles)}
+ {INFO} File     :{red} {filename}
+""")
     print(f"{SUCCESS} Server scraped!", reset)
+
+    output_dir = os.path.join(tool_path, "Programs", "Output", "DiscordServerScraper")
+    if platform_pc == "Windows":
+        os.startfile(output_dir)
+    else:
+        subprocess.Popen(['xdg-open', output_dir])
     
     Continue()
     Reset()

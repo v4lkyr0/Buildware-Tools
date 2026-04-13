@@ -18,9 +18,26 @@ try:
     webhook = ChoiceWebhook()
 
     print()
-    message = input(f"{INPUT} Message {red}->{reset} ")
-    amount = int(input(f"{INPUT} Amount {red}->{reset} "))
-    threads = int(input(f"{INPUT} Threads {red}->{reset} "))
+    message = input(f"{INPUT} Message {red}->{reset} ").strip()
+    if not message:
+        ErrorInput()
+
+    try:
+        amount = int(input(f"{INPUT} Amount {red}->{reset} ").strip())
+    except ValueError:
+        ErrorNumber()
+
+    if amount <= 0:
+        ErrorNumber()
+
+    try:
+        threads = int(input(f"{INPUT} Threads {red}->{reset} ").strip())
+    except ValueError:
+        ErrorNumber()
+
+    if threads <= 0:
+        ErrorNumber()
+
     print()
 
     print(f"{LOADING} Starting Webhook Spammer..", reset)
@@ -51,7 +68,7 @@ try:
                     print(f"{ERROR} Status:{red} Rate Limited {white}| Message:{red} {message}", reset)
                     time.sleep(retry_after)
                 else:
-                    print(f"{ERROR} Status:{red} Not Send     {white}| Message:{red} {message}", reset)
+                    print(f"{ERROR} Status:{red} Not Sent     {white}| Message:{red} {message}", reset)
             except:
                 print(f"{ERROR} Status:{red} Error        {white}| Message:{red} {message}", reset)
 

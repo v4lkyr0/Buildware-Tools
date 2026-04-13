@@ -14,11 +14,16 @@ Connection()
 
 try:
     token = ChoiceToken()
-    invite_code = input(f"{INPUT} Server Invitation {red}->{reset} ").split("/")[-1]
+
+    invite_input = input(f"{INPUT} Server Invitation {red}->{reset} ").strip()
+    if not invite_input:
+        ErrorInput()
+
+    invite_code = invite_input.split("/")[-1]
 
     print(f"{LOADING} Joining Server..", reset)
 
-    headers = {"Authorization": token}
+    headers = {"Authorization": token, "User-Agent": RandomUserAgents()}
     response = requests.post(f"https://discord.com/api/v9/invites/{invite_code}", headers=headers)
 
     if response.status_code == 200:

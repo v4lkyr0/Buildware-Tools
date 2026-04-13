@@ -16,12 +16,9 @@ try:
     webhook = ChoiceWebhook()
     
     print()
-    print(f"{INFO} Leave empty to skip optional fields", reset)
-    print()
-    
     embed_title = input(f"{INPUT} Embed Title {red}->{reset} ").strip()
     embed_description = input(f"{INPUT} Embed Description {red}->{reset} ").strip()
-    embed_color = input(f"{INPUT} Embed Color {red}({white}hex, e.g., FF0000{red}){white} {red}->{reset} ").strip()
+    embed_color = input(f"{INPUT} Embed Color {red}->{reset} ").strip()
     embed_footer = input(f"{INPUT} Footer Text {red}->{reset} ").strip()
     embed_footer_icon = input(f"{INPUT} Footer Icon URL {red}->{reset} ").strip()
     embed_image = input(f"{INPUT} Image URL {red}->{reset} ").strip()
@@ -37,7 +34,7 @@ try:
     fields = []
     if add_fields in ['y', 'yes']:
         while True:
-            field_name = input(f"{INPUT} Field Name {red}({white}empty to finish{red}){white} {red}->{reset} ").strip()
+            field_name = input(f"{INPUT} Field Name {red}->{reset} ").strip()
             if not field_name:
                 break
             field_value = input(f"{INPUT} Field Value {red}->{reset} ").strip()
@@ -76,8 +73,8 @@ try:
     if embed_url:
         embed["url"] = embed_url
     if use_timestamp in ['y', 'yes']:
-        from datetime import datetime
-        embed["timestamp"] = datetime.utcnow().isoformat()
+        from datetime import datetime, timezone
+        embed["timestamp"] = datetime.now(timezone.utc).isoformat()
     if fields:
         embed["fields"] = fields[:25]
     

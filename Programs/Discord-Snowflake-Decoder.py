@@ -34,16 +34,16 @@ def decode_snowflake(snowflake):
         return {'valid': False, 'error': str(e)}
 
 try:
-    snowflake = input(f"{INPUT} Snowflake Id {red}->{reset} ")
+    snowflake = input(f"{INPUT} Snowflake Id {red}->{reset} ").strip()
     
-    if not snowflake.strip():
+    if not snowflake:
         print(f"{ERROR} No Snowflake provided!", reset)
         Continue()
         Reset()
 
     print(f"{LOADING} Decoding Snowflake..", reset)
 
-    result = decode_snowflake(snowflake.strip())
+    result = decode_snowflake(snowflake)
     
     if result['valid']:
         now = datetime.now()

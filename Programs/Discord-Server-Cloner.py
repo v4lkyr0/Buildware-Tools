@@ -17,11 +17,11 @@ CheckGithubStar()
 try:
     token = ChoiceToken()
     
-    source_id = input(f"{INPUT} Source Server ID {red}->{reset} ")
+    source_id = input(f"{INPUT} Source Server ID {red}->{reset} ").strip()
     if not source_id:
         ErrorInput()
     
-    target_id = input(f"{INPUT} Target Server ID {red}->{reset} ")
+    target_id = input(f"{INPUT} Target Server ID {red}->{reset} ").strip()
     if not target_id:
         ErrorInput()
     

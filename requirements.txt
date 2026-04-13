@@ -2,3 +2,5 @@ colorama
 requests
 selenium
 websocket-client
+icmplib
+psutil

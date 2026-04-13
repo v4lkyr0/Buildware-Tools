@@ -10,41 +10,79 @@ try:
     changelog = f"""
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
- {INFO}{red} Creator Message:
- {INFO}    - Hello {username_pc}! Hope you're enjoying all the features in this tool. If you like it
-          and want to support the project, feel free to leave a star on the repository!
+ {INFO} Creator Message:
+ {INFO}    - Hey {username_pc}! This is v{version_tool} of {name_tool}. A major feature will be coming in
+ {INFO}      the next update. Get ready!
  
- {INFO} {red}New Features:
- {INFO}    - Discord Token Grabber Builder [Star Required]
- {INFO}    - Discord Injection Builder     [Star Required]
- {INFO}    - Discord Injection Cleaner
- {INFO}    - Discord Server Scraper        [Star Required]
- {INFO}    - Discord Server Cloner         [Star Required]
- {INFO}    - Discord Server Editor
- {INFO}    - Discord Vanity Url Sniper     [Star Required]
- {INFO}    - Discord Invite Generator
- {INFO}    - Discord Invite Tracker
- {INFO}    - Discord Embed Creator
- {INFO}    - Discord Bot Information
- {INFO}    - Discord Bot Nuker             [Star Required]
- {INFO}    - Discord Bot Raider            [Star Required]
- {INFO}    - Discord Token Banner Changer
- {INFO}    - Discord Server Ban All        [Star Required]
- {INFO}    - Discord Server Kick All
- {INFO}    - Discord Server Unban All
- {INFO}    - Discord Server Mute All
+ {INFO} New Features:
+ {INFO}    - Added Feedback System
+ {INFO}    - Added Osint Ip Lookup
+ {INFO}    - Added Osint Dns Lookup
+ {INFO}    - Added Osint Whois Lookup
+ {INFO}    - Added Osint Subdomain Finder
+ {INFO}    - Added Osint Header Analyzer
+ {INFO}    - Added Osint Website Detector
+ {INFO}    - Added Osint Username Lookup
+ {INFO}    - Added Osint Email Checker
+ {INFO}    - Added Osint Email Breach Checker
+ {INFO}    - Added Osint Phone Lookup
+ {INFO}    - Added Network Port Scanner
+ {INFO}    - Added Network Ip Pinger
+ {INFO}    - Added Network Traceroute
+ {INFO}    - Added Network Reverse Dns
+ {INFO}    - Added Network Mac Lookup
+ {INFO}    - Added Network Interface Information
+ {INFO}    - Added Network Website Status
+ {INFO}    - Added Network Ssl Checker
+ {INFO}    - Added Network Proxy Checker
+ {INFO}    - Added Network Wifi Passwords
+ {INFO}    - Added Utilities Password Generator
+ {INFO}    - Added Utilities Temp Mail
+ {INFO}    - Added Utilities System Information
+ {INFO}    - Added Utilities Hash Generator
+ {INFO}    - Added Utilities Hash Identifier
+ {INFO}    - Added Utilities File Hasher
+ {INFO}    - Added Utilities Base64 Converter
+ {INFO}    - Added Utilities Caesar Cipher
+ {INFO}    - Added Utilities Text Converter
+ {INFO}    - Added Utilities Url Analyzer
+ {INFO}    - Added Roblox Cookie Login
+ {INFO}    - Added Roblox Cookie Information
+ {INFO}    - Added Roblox Id Information
+ {INFO}    - Added Roblox Username Information
+ {INFO}    - Added Roblox Group Information
+ {INFO}    - Added Roblox Game Information
 
- {INFO} {red}Improvements:
- {INFO}    - All scripts are now more stable and less likely to encounter errors or get rate limited.
+ {INFO} Improvements:
+ {INFO}    - New Categories: OSINT, NETWORK, UTILITIES & ROBLOX
+ {INFO}    - Improved error handling across all programs
 
- {INFO} {red}Bug Fixes:
- {INFO}    - All known bugs have been fixed.
+ {INFO} Bug Fixes:
+ {INFO}    - All known bugs have been fixed
 
- {INFO} {red}Renamed Features:
- {INFO}    - Discord Token Alias Changer {red}->{white} Discord Token Pronoun Changer
+ {INFO} Renamed Features:
+ {INFO}    - Discord Token Pfp Changer {red}->{white} Discord Token Image Changer
 
- {INFO} {red}Removed Features:
- {INFO}    - Nothing has been removed.
+ {INFO} Removed Features:
+ {INFO}    - Removed Discord Bot Id To Invite
+ {INFO}    - Removed Discord Bot Information
+ {INFO}    - Removed Discord Id To Token
+ {INFO}    - Removed Discord Injection Builder
+ {INFO}    - Removed Discord Invite Generator
+ {INFO}    - Removed Discord Invite Tracker
+ {INFO}    - Removed Discord Token Banner Changer
+ {INFO}    - Removed Discord Token Block Friends
+ {INFO}    - Removed Discord Token Delete Dm
+ {INFO}    - Removed Discord Token Delete Friends
+ {INFO}    - Removed Discord Token Grabber Builder
+ {INFO}    - Removed Discord Token House Changer
+ {INFO}    - Removed Discord Token Language Changer
+ {INFO}    - Removed Discord Token Pronoun Changer
+ {INFO}    - Removed Discord Token Theme Changer
+ {INFO}    - Removed Discord Token Unblock Users
+ {INFO}    - Removed Discord Webhook Deleter
+ {INFO}    - Removed Discord Webhook Generator
+ {INFO}    - Removed Exit Buildware
 
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"""
     Scroll(Gradient(changelog))

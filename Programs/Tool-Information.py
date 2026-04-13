@@ -15,7 +15,7 @@ try:
  {INFO} GitHub    :{red} {github_url}
  {INFO} Guns.lol  :{red} {gunslol_url}
  {INFO} License   :{red} {license} ({license_url})
-    """)
+""")
     Continue()
     Reset()
 

@@ -10,14 +10,14 @@ try:
 except Exception as e:
     MissingModule(e)
 
-Title("Extras File")
+Title("Extras Files")
 
 try:
     extras_path = os.path.join(tool_path, "Programs", "Extras")
     
     Scroll(f"""
-{PREFIX}01{SUFFIX} Data File
-{PREFIX}02{SUFFIX} Extras Folder
+ {PREFIX}01{SUFFIX} Data File
+ {PREFIX}02{SUFFIX} Extras Folder
 """)
     
     choice = input(f"{INPUT} Choice {red}->{reset} ").strip().lstrip("0")
@@ -32,7 +32,7 @@ try:
     else:
         ErrorChoice()
     
-    print(f'{LOADING} Opening {red}"{white}{file_name}{red}"{white}..', reset)
+    print(f"{LOADING} Opening File..", reset)
 
     try:
         if platform_pc == "Windows":
@@ -42,7 +42,7 @@ try:
         print(f"{SUCCESS} {file_name} opened!", reset)
     except:
         print(f"{ERROR} Error while trying to open {file_name}!", reset)
-        print(f"{INFO} Path:{red} {file_path}{reset}", reset)
+        print(f"{INFO} Path:{red} {file_path}", reset)
 
     print()
     

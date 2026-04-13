@@ -15,7 +15,7 @@ Connection()
 try:
     token = ChoiceToken()
     
-    server_id = input(f"{INPUT} Server ID {red}->{reset} ")
+    server_id = input(f"{INPUT} Server ID {red}->{reset} ").strip()
     if not server_id:
         ErrorInput()
     
@@ -34,20 +34,20 @@ try:
     current_name = guild_data.get("name", "Unknown")
     
     Scroll(f"""
-{INFO} Current Server Name:{red} {current_name}
+ {INFO} Current Server Name :{red} {current_name}
 
-{PREFIX}01{SUFFIX} Change Name
-{PREFIX}02{SUFFIX} Change Description
-{PREFIX}03{SUFFIX} Change AFK Channel
-{PREFIX}04{SUFFIX} Change AFK Timeout
-{PREFIX}05{SUFFIX} Change Verification Level
-{PREFIX}06{SUFFIX} Change System Channel
-    """)
+ {PREFIX}01{SUFFIX} Change Name
+ {PREFIX}02{SUFFIX} Change Description
+ {PREFIX}03{SUFFIX} Change AFK Channel
+ {PREFIX}04{SUFFIX} Change AFK Timeout
+ {PREFIX}05{SUFFIX} Change Verification Level
+ {PREFIX}06{SUFFIX} Change System Channel
+""")
     
     choice = input(f"{INPUT} Choice {red}->{reset} ").strip().lstrip("0")
     
     if choice == "1":
-        new_name = input(f"{INPUT} New Name {red}->{reset} ")
+        new_name = input(f"{INPUT} New Name {red}->{reset} ").strip()
         if not new_name:
             ErrorInput()
         
@@ -65,7 +65,7 @@ try:
             print(f"{ERROR} Failed to change Server Name!", reset)
     
     elif choice == "2":
-        new_description = input(f"{INPUT} New Description {red}->{reset} ")
+        new_description = input(f"{INPUT} New Description {red}->{reset} ").strip()
         
         print(f"{LOADING} Changing Server Description..", reset)
         
@@ -81,7 +81,7 @@ try:
             print(f"{ERROR} Failed to change Server Description!", reset)
     
     elif choice == "3":
-        channel_id = input(f"{INPUT} AFK Channel ID {red}->{reset} ")
+        channel_id = input(f"{INPUT} AFK Channel ID {red}->{reset} ").strip()
         if not channel_id:
             ErrorInput()
         
@@ -100,7 +100,7 @@ try:
     
     elif choice == "4":
         print(f"{INFO} AFK Timeout values:{red} 60, 300, 900, 1800, 3600", reset)
-        timeout = input(f"{INPUT} AFK Timeout {red}->{reset} ")
+        timeout = input(f"{INPUT} AFK Timeout {red}->{reset} ").strip()
         
         try:
             timeout = int(timeout)
@@ -124,7 +124,7 @@ try:
     
     elif choice == "5":
         print(f"{INFO} Verification levels:{red} 0=None, 1=Low, 2=Medium, 3=High, 4=Highest", reset)
-        level = input(f"{INPUT} Verification Level {red}->{reset} ")
+        level = input(f"{INPUT} Verification Level {red}->{reset} ").strip()
         
         try:
             level = int(level)
@@ -147,7 +147,7 @@ try:
             print(f"{ERROR} Failed to change Verification Level!", reset)
     
     elif choice == "6":
-        channel_id = input(f"{INPUT} System Channel ID {red}->{reset} ")
+        channel_id = input(f"{INPUT} System Channel ID {red}->{reset} ").strip()
         if not channel_id:
             ErrorInput()
         

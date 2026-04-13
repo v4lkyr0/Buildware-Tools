@@ -18,8 +18,8 @@ try:
 
     print(f"{LOADING} Retrieving Information..", reset)
 
-    headers  = {'Authorization': token, 'Content-Type': 'application/json'}
-    api      = requests.get('https://discord.com/api/v9/users/@me', headers={'Authorization': token}).json()
+    headers  = {'Authorization': token, 'Content-Type': 'application/json', 'User-Agent': RandomUserAgents()}
+    api      = requests.get('https://discord.com/api/v9/users/@me', headers={'Authorization': token, 'User-Agent': RandomUserAgents()}).json()
     response = requests.get('https://discord.com/api/v9/users/@me', headers=headers)
 
     status = "Valid" if response.status_code == 200 else "Invalid"
@@ -73,7 +73,7 @@ try:
         avatar_url = "No Avatar"
 
     try:
-        billing = requests.get('https://discord.com/api/v9/users/@me/billing/payment-sources', headers={'Authorization': token}).json()
+        billing = requests.get('https://discord.com/api/v9/users/@me/billing/payment-sources', headers={'Authorization': token, 'User-Agent': RandomUserAgents()}).json()
         if billing:
             payment_map     = {1: 'Credit Card', 2: 'PayPal'}
             payment_methods = ', '.join([payment_map.get(m['type'], 'Other') for m in billing])
@@ -83,13 +83,13 @@ try:
         payment_methods = 'No Payment Methods'
 
     try:
-        gift_codes = requests.get('https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': token}).json()
+        gift_codes = requests.get('https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': token, 'User-Agent': RandomUserAgents()}).json()
         gift = ', '.join([f"{g.get('promotion', {}).get('outbound_title', 'Unknown')} -> {g.get('code', 'Unknown')}" for g in gift_codes]) if gift_codes else 'No Gift Codes'
     except:
         gift = 'No Gift Codes'
 
     try:
-        guilds_response = requests.get('https://discord.com/api/v9/users/@me/guilds?with_counts=true', headers={'Authorization': token})
+        guilds_response = requests.get('https://discord.com/api/v9/users/@me/guilds?with_counts=true', headers={'Authorization': token, 'User-Agent': RandomUserAgents()})
         if guilds_response.status_code == 200:
             guilds       = guilds_response.json()
             guild_count  = len(guilds)
@@ -109,7 +109,7 @@ try:
         owner_guilds_names = ''
 
     try:
-        relationships = requests.get('https://discord.com/api/v9/users/@me/relationships', headers={'Authorization': token}).json()
+        relationships = requests.get('https://discord.com/api/v9/users/@me/relationships', headers={'Authorization': token, 'User-Agent': RandomUserAgents()}).json()
         friends_list  = []
         for friend in relationships:
             if friend.get('type') != 1:

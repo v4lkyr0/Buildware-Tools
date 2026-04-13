@@ -17,7 +17,7 @@ try:
 
     print(f"{LOADING} Retrieving Webhook Information..", reset)
 
-    response = requests.get(webhook)
+    response = requests.get(webhook, headers={"User-Agent": RandomUserAgents()})
     if response.status_code == 200:
         data = response.json()
     else:

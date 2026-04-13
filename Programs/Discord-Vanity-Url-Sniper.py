@@ -12,23 +12,22 @@ except Exception as e:
 
 Title("Discord Vanity Url Sniper")
 Connection()
-CheckGithubStar()
 
 try:
     token = ChoiceToken()
     
-    server_id = input(f"{INPUT} Server ID {red}->{reset} ")
+    server_id = input(f"{INPUT} Server ID {red}->{reset} ").strip()
     if not server_id:
         ErrorInput()
     
-    vanity_code = input(f"{INPUT} Vanity Code {red}->{reset} ")
+    vanity_code = input(f"{INPUT} Vanity Code {red}->{reset} ").strip()
     if not vanity_code:
         ErrorInput()
     
     DEFAULT_CHECK_DELAY = 0.5
     MIN_CHECK_DELAY = 0.1
     
-    delay = input(f"{INPUT} Check Delay {red}({white}seconds{red}) ->{reset} ").strip()
+    delay = input(f"{INPUT} Check Delay {red}->{reset} ").strip()
     try:
         delay = float(delay)
         if delay < MIN_CHECK_DELAY:

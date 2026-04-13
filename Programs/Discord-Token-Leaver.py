@@ -15,7 +15,7 @@ Connection()
 try:
     token = ChoiceToken()
     
-    headers = {"Authorization": token, "Content-Type": "application/json"}
+    headers = {"Authorization": token, "Content-Type": "application/json", "User-Agent": RandomUserAgents()}
     guilds_id = requests.get("https://discord.com/api/v9/users/@me/guilds", headers=headers).json()
 
     if not guilds_id:

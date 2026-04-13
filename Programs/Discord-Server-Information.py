@@ -14,11 +14,11 @@ Title("Discord Server Information")
 Connection()
 
 try:
-    invite = input(f"{INPUT} Server Invitation {red}->{reset} ")
-    try:
-        invite_code = invite.split("/")[-1]
-    except:
-        invite_code = invite
+    invite = input(f"{INPUT} Server Invitation {red}->{reset} ").strip()
+    if not invite:
+        ErrorInput()
+
+    invite_code = invite.split("/")[-1]
 
     print(f"{LOADING} Retrieving Information..", reset)
 

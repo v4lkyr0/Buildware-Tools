@@ -11,8 +11,6 @@ try:
 except Exception as e:
     MissingModule(e)
 
-pages_path = os.path.join(tool_path, "Programs", "Extras", "Buildware.json")
-
 def Connection():
     try:
         requests.get("https://www.google.com", timeout=5)
@@ -48,66 +46,98 @@ Banner = """
                           ░         ░      ░      ░  ░   ░        ░          ░  ░   ░        ░  ░ """
 
 def Menu(page=1):
+    update = Update()
     Title(f"Page {page}")
 
     if page == 1:
-        nav = f"{red}> {PREFIX}?{SUFFIX} {version_tool} Changelog            ░                       ░                                            {white}Exit {name_tool} {PREFIX}E{SUFFIX} {red}<\n{red}> {PREFIX}!{SUFFIX} Tool Information                                                                                Extras Files {PREFIX}F{SUFFIX} {red}<\n                                                                                                         Next Page {PREFIX}N{SUFFIX} {red}<"
-        content = f"""   ├─ {PREFIX1}01{SUFFIX1} Discord Token Information      ├─ {PREFIX1}11{SUFFIX1} Discord Server Information     ├─ {PREFIX1}21{SUFFIX1} Discord Webhook Information
-   ├─ {PREFIX1}02{SUFFIX1} Discord Token Login            ├─ {PREFIX1}12{SUFFIX1}{yellow} Discord Server Scraper         ├─ {PREFIX1}22{SUFFIX1} Discord Webhook Generator
-   ├─ {PREFIX1}03{SUFFIX1} Discord Token Onliner          ├─ {PREFIX1}13{SUFFIX1}{yellow} Discord Server Cloner          ├─ {PREFIX1}23{SUFFIX1} Discord Webhook Spammer
-   ├─ {PREFIX1}04{SUFFIX1} Discord Token Generator        ├─ {PREFIX1}14{SUFFIX1} Discord Server Editor          ├─ {PREFIX1}24{SUFFIX1} Discord Webhook Deleter
-   ├─ {PREFIX1}05{SUFFIX1}{yellow} Discord Token Grabber Builder  ├─ {PREFIX1}15{SUFFIX1}{yellow} Discord Vanity Url Sniper      ├─ {PREFIX1}25{SUFFIX1} Discord Bot Information
-   ├─ {PREFIX1}06{SUFFIX1} Discord Token Disabler         ├─ {PREFIX1}16{SUFFIX1} Discord Invite Generator       ├─ {PREFIX1}26{SUFFIX1}{yellow} Discord Bot Nuker
-   ├─ {PREFIX1}07{SUFFIX1}{yellow} Discord Token Nuker            ├─ {PREFIX1}17{SUFFIX1} Discord Invite Tracker         ├─ {PREFIX1}27{SUFFIX1}{yellow} Discord Bot Raider
-   ├─ {PREFIX1}08{SUFFIX1} Discord Token Joiner           ├─ {PREFIX1}18{SUFFIX1} Discord Embed Creator          ├─ {PREFIX1}28{SUFFIX1} Discord Bot Id To Invite
-   ├─ {PREFIX1}09{SUFFIX1} Discord Token Leaver           ├─ {PREFIX1}19{SUFFIX1} Discord Snowflake Decoder      ├─ {PREFIX1}29{SUFFIX1} Discord Id To Token
-   └─ {PREFIX1}10{SUFFIX1} Discord Token Spammer          └─ {PREFIX1}20{SUFFIX1}{yellow} Discord Mass Dm                └─ {PREFIX1}30{SUFFIX1} Discord Ghost Pinger"""
+        nav = f"{red}> {PREFIX}?{SUFFIX} {version_tool} Changelog            ░                       ░                                                  {white}Feedback {PREFIX}F{SUFFIX} {red}<\n{red}> {PREFIX}!{SUFFIX} Tool Information                                                                                Extras Files {PREFIX}E{SUFFIX} {red}<\n                                                                                                         Next Page {PREFIX}N{SUFFIX} {red}<"
+        content = f"""
+╓──────────────────────────────────────╖╓──────────────────────────────────────╖╓──────────────────────────────────────╖
+                 OSINT                                  NETWORK                                UTILITIES               
+╙┬─────────────────────────────────────╜╙┬─────────────────────────────────────╜╙┬─────────────────────────────────────╜
+ ├─ {PREFIX1}01{SUFFIX1} Osint Ip Lookup                 ├─ {PREFIX1}11{SUFFIXP} Network Port Scanner            ├─ {PREFIX1}21{SUFFIX1} Utility Password Generator
+ ├─ {PREFIX1}02{SUFFIX1} Osint Dns Lookup                ├─ {PREFIX1}12{SUFFIX1} Network Ip Pinger               ├─ {PREFIX1}22{SUFFIXP} Utility Temp Mail
+ ├─ {PREFIX1}03{SUFFIX1} Osint Whois Lookup              ├─ {PREFIX1}13{SUFFIX1} Network Traceroute              ├─ {PREFIX1}23{SUFFIX1} Utility System Information
+ ├─ {PREFIX1}04{SUFFIXP} Osint Subdomain Finder          ├─ {PREFIX1}14{SUFFIX1} Network Reverse Dns             ├─ {PREFIX1}24{SUFFIX1} Utility Hash Generator
+ ├─ {PREFIX1}05{SUFFIX1} Osint Header Analyzer           ├─ {PREFIX1}15{SUFFIX1} Network Mac Lookup              ├─ {PREFIX1}25{SUFFIX1} Utility Hash Identifier
+ ├─ {PREFIX1}06{SUFFIX1} Osint Website Detector          ├─ {PREFIX1}16{SUFFIX1} Network Interface Information   ├─ {PREFIX1}26{SUFFIX1} Utility File Hasher
+ ├─ {PREFIX1}07{SUFFIXP} Osint Username Lookup           ├─ {PREFIX1}17{SUFFIX1} Network Website Status          ├─ {PREFIX1}27{SUFFIX1} Utility Base64 Converter
+ ├─ {PREFIX1}08{SUFFIX1} Osint Email Checker             ├─ {PREFIX1}18{SUFFIX1} Network Ssl Checker             ├─ {PREFIX1}28{SUFFIX1} Utility Caesar Cipher
+ ├─ {PREFIX1}09{SUFFIXP} Osint Email Breach Checker      ├─ {PREFIX1}19{SUFFIX1} Network Proxy Checker           ├─ {PREFIX1}29{SUFFIX1} Utility Text Converter
+ └─ {PREFIX1}10{SUFFIX1} Osint Phone Lookup              └─ {PREFIX1}20{SUFFIXP} Network Wifi Passwords          └─ {PREFIX1}30{SUFFIX1} Utility Url Analyzer"""
 
     elif page == 2:
-        nav = f"{red}> {PREFIX}?{SUFFIX} {version_tool} Changelog            ░                       ░                                            {white}Exit {name_tool} {PREFIX}E{SUFFIX} {red}<\n{red}> {PREFIX}!{SUFFIX} Tool Information                                                                                Extras Files {PREFIX}F{SUFFIX} {red}<\n{red}> {PREFIX}B{SUFFIX} Back Page"
-        content = f"""   ├─ {PREFIX1}31{SUFFIX1} Discord Token Pfp Changer      ├─ {PREFIX1}41{SUFFIX1}{yellow} Discord Server Ban All         ├─ {PREFIX1}51{SUFFIX1} Soon
-   ├─ {PREFIX1}32{SUFFIX1} Discord Token Banner Changer   ├─ {PREFIX1}42{SUFFIX1} Discord Server Kick All        ├─ {PREFIX1}52{SUFFIX1} Soon
-   ├─ {PREFIX1}33{SUFFIX1} Discord Token Bio Changer      ├─ {PREFIX1}43{SUFFIX1} Discord Server Unban All       ├─ {PREFIX1}53{SUFFIX1} Soon
-   ├─ {PREFIX1}34{SUFFIX1} Discord Token Pronoun Changer  ├─ {PREFIX1}44{SUFFIX1} Discord Server Mute All        ├─ {PREFIX1}54{SUFFIX1} Soon
-   ├─ {PREFIX1}35{SUFFIX1} Discord Token Theme Changer    ├─ {PREFIX1}45{SUFFIX1} Discord Delete Friends         ├─ {PREFIX1}55{SUFFIX1} Soon
-   ├─ {PREFIX1}36{SUFFIX1} Discord Token Language Changer ├─ {PREFIX1}46{SUFFIX1} Discord Block Friends          ├─ {PREFIX1}56{SUFFIX1} Soon
-   ├─ {PREFIX1}37{SUFFIX1} Discord Token Status Changer   ├─ {PREFIX1}47{SUFFIX1} Discord Unblock Users          ├─ {PREFIX1}57{SUFFIX1} Soon
-   ├─ {PREFIX1}38{SUFFIX1} Discord Token House Changer    ├─ {PREFIX1}48{SUFFIX1} Discord Delete Dm              ├─ {PREFIX1}58{SUFFIX1} Soon
-   ├─ {PREFIX1}39{SUFFIX1}{yellow} Discord Injection Builder      ├─ {PREFIX1}49{SUFFIX1} Soon                           ├─ {PREFIX1}59{SUFFIX1} Soon
-   └─ {PREFIX1}40{SUFFIX1} Discord Injection Cleaner      └─ {PREFIX1}50{SUFFIX1} Soon                           └─ {PREFIX1}60{SUFFIX1} Soon"""
-
-    return f"""{Banner}
-{nav}
-
+        nav = f"{red}> {PREFIX}?{SUFFIX} {version_tool} Changelog            ░                       ░                                                  {white}Feedback {PREFIX}F{SUFFIX} {red}<\n{red}> {PREFIX}!{SUFFIX} Tool Information                                                                                Extras Files {PREFIX}E{SUFFIX} {red}<\n{red}> {PREFIX}B{SUFFIX} Back Page                                                                                          Next Page {PREFIX}N{SUFFIX} {red}<"
+        content = f"""
 ╓──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╖
-                                        {github_url}
-╙──┬──────────────────────────────────────┬──────────────────────────────────────┬─────────────────────────────────────╜
+                                                         DISCORD                                                        
+╙┬───────────────────────────────────────┬───────────────────────────────────────┬─────────────────────────────────────╜
+ ├─ {PREFIX1}31{SUFFIX1} Discord Server Information      ├─ {PREFIX1}41{SUFFIX1} Discord Token Information       ├─ {PREFIX1}51{SUFFIX1} Discord Token Image Changer
+ ├─ {PREFIX1}32{SUFFIX1} Discord Server Editor           ├─ {PREFIX1}42{SUFFIX1} Discord Token Login             ├─ {PREFIX1}52{SUFFIX1} Discord Token Bio Changer
+ ├─ {PREFIX1}33{SUFFIXP} Discord Server Scraper          ├─ {PREFIX1}43{SUFFIX1} Discord Token Joiner            ├─ {PREFIX1}53{SUFFIX1} Discord Token Status Changer
+ ├─ {PREFIX1}34{SUFFIXP} Discord Server Cloner           ├─ {PREFIX1}44{SUFFIX1} Discord Token Leaver            ├─ {PREFIX1}54{SUFFIX1} Discord Token Generator
+ ├─ {PREFIX1}35{SUFFIXP} Discord Server Ban All          ├─ {PREFIX1}45{SUFFIXP} Discord Token Mass Dm           ├─ {PREFIX1}55{SUFFIX1} Discord Embed Creator
+ ├─ {PREFIX1}36{SUFFIX1} Discord Server Kick All         ├─ {PREFIX1}46{SUFFIX1} Discord Token Spammer           ├─ {PREFIX1}56{SUFFIX1} Discord Injection Cleaner
+ ├─ {PREFIX1}37{SUFFIX1} Discord Server Unban All        ├─ {PREFIX1}47{SUFFIX1} Discord Token Ghost Pinger      ├─ {PREFIX1}57{SUFFIX1} Discord Webhook Spammer
+ ├─ {PREFIX1}38{SUFFIX1} Discord Server Mute All         ├─ {PREFIX1}48{SUFFIXP} Discord Token Nuker             ├─ {PREFIX1}58{SUFFIX1} Discord Webhook Information
+ ├─ {PREFIX1}39{SUFFIXP} Discord Bot Nuker               ├─ {PREFIX1}49{SUFFIX1} Discord Token Disabler          ├─ {PREFIX1}59{SUFFIX1} Discord Vanity Url Sniper
+ └─ {PREFIX1}40{SUFFIX1} Discord Bot Raider              └─ {PREFIX1}50{SUFFIX1} Discord Token Onliner           └─ {PREFIX1}60{SUFFIX1} Discord Snowflake Decoder"""
+
+    elif page == 3:
+        nav = f"{red}> {PREFIX}?{SUFFIX} {version_tool} Changelog            ░                       ░                                                  {white}Feedback {PREFIX}F{SUFFIX} {red}<\n{red}> {PREFIX}!{SUFFIX} Tool Information                                                                                Extras Files {PREFIX}E{SUFFIX} {red}<\n{red}> {PREFIX}B{SUFFIX} Back Page"
+        content = f"""
+╓──────────────────────────────────────╖╓──────────────────────────────────────╖╓──────────────────────────────────────╖
+                 ROBLOX                
+╙┬─────────────────────────────────────╜╙┬─────────────────────────────────────╜╙┬─────────────────────────────────────╜
+ ├─ {PREFIX1}61{SUFFIXP} Roblox Cookie Login             ├─ {PREFIX1}71{SUFFIX1}                                 ├─ {PREFIX1}81{SUFFIX1}
+ ├─ {PREFIX1}62{SUFFIXP} Roblox Cookie Information       ├─ {PREFIX1}72{SUFFIX1}                                 ├─ {PREFIX1}82{SUFFIX1}
+ ├─ {PREFIX1}63{SUFFIX1} Roblox Id Information           ├─ {PREFIX1}73{SUFFIX1}                                 ├─ {PREFIX1}83{SUFFIX1}
+ ├─ {PREFIX1}64{SUFFIX1} Roblox Username Information     ├─ {PREFIX1}74{SUFFIX1}                                 ├─ {PREFIX1}84{SUFFIX1}
+ ├─ {PREFIX1}65{SUFFIX1} Roblox Group Information        ├─ {PREFIX1}75{SUFFIX1}                                 ├─ {PREFIX1}85{SUFFIX1}
+ ├─ {PREFIX1}66{SUFFIX1} Roblox Game Information         ├─ {PREFIX1}76{SUFFIX1}                                 ├─ {PREFIX1}86{SUFFIX1}
+ ├─ {PREFIX1}67{SUFFIX1}                                 ├─ {PREFIX1}77{SUFFIX1}                                 ├─ {PREFIX1}87{SUFFIX1}
+ ├─ {PREFIX1}68{SUFFIX1}                                 ├─ {PREFIX1}78{SUFFIX1}                                 ├─ {PREFIX1}88{SUFFIX1}
+ ├─ {PREFIX1}69{SUFFIX1}                                 ├─ {PREFIX1}79{SUFFIX1}                                 ├─ {PREFIX1}89{SUFFIX1}
+ └─ {PREFIX1}70{SUFFIX1}                                 └─ {PREFIX1}80{SUFFIX1}                                 └─ {PREFIX1}90{SUFFIX1}"""
+
+    return f"""{update}{Banner}
+{nav}
 {content}"""
 
 options = {
-    "01": "Discord-Token-Information",      "21": "Discord-Webhook-Information",   "41": "Discord-Server-Ban-All",
-    "02": "Discord-Token-Login",            "22": "Discord-Webhook-Generator",     "42": "Discord-Server-Kick-All",
-    "03": "Discord-Token-Onliner",          "23": "Discord-Webhook-Spammer",       "43": "Discord-Server-Unban-All",
-    "04": "Discord-Token-Generator",        "24": "Discord-Webhook-Deleter",       "44": "Discord-Server-Mute-All",
-    "05": "Discord-Token-Grabber-Builder",  "25": "Discord-Bot-Information",       "45": "Discord-Token-Delete-Friends",
-    "06": "Discord-Token-Disabler",         "26": "Discord-Bot-Nuker",             "46": "Discord-Token-Block-Friends",
-    "07": "Discord-Token-Nuker",            "27": "Discord-Bot-Raider",            "47": "Discord-Token-Unblock-Users",
-    "08": "Discord-Token-Joiner",           "28": "Discord-Bot-Id-To-Invite",      "48": "Discord-Token-Delete-Dm",
-    "09": "Discord-Token-Leaver",           "29": "Discord-Id-To-Token",           "49": "Soon",
-    "10": "Discord-Token-Spammer",          "30": "Discord-Token-Ghost-Pinger",    "50": "Soon",
-    "11": "Discord-Server-Information",     "31": "Discord-Token-Pfp-Changer",     "51": "Soon",
-    "12": "Discord-Server-Scraper",         "32": "Discord-Token-Banner-Changer",  "52": "Soon",
-    "13": "Discord-Server-Cloner",          "33": "Discord-Token-Bio-Changer",     "53": "Soon",
-    "14": "Discord-Server-Editor",          "34": "Discord-Token-Pronoun-Changer", "54": "Soon",
-    "15": "Discord-Vanity-Url-Sniper",      "35": "Discord-Token-Theme-Changer",   "55": "Soon",
-    "16": "Discord-Invite-Generator",       "36": "Discord-Token-Language-Changer","56": "Soon",
-    "17": "Discord-Invite-Tracker",         "37": "Discord-Token-CStatus-Changer", "57": "Soon",
-    "18": "Discord-Embed-Creator",          "38": "Discord-Token-House-Changer",   "58": "Soon",
-    "19": "Discord-Snowflake-Decoder",      "39": "Discord-Injection-Builder",     "59": "Soon",
-    "20": "Discord-Token-Mass-Dm",          "40": "Discord-Injection-Cleaner",     "60": "Soon",
+    "01": "Osint-Ip-Lookup",                 "21": "Utility-Password-Generator",     "41": "Discord-Token-Information",
+    "02": "Osint-Dns-Lookup",                "22": "Utility-Temp-Mail",              "42": "Discord-Token-Login",
+    "03": "Osint-Whois-Lookup",              "23": "Utility-System-Information",     "43": "Discord-Token-Joiner",
+    "04": "Osint-Subdomain-Finder",          "24": "Utility-Hash-Generator",         "44": "Discord-Token-Leaver",
+    "05": "Osint-Header-Analyzer",           "25": "Utility-Hash-Identifier",        "45": "Discord-Token-Mass-Dm",
+    "06": "Osint-Website-Detector",          "26": "Utility-File-Hasher",            "46": "Discord-Token-Spammer",
+    "07": "Osint-Username-Lookup",           "27": "Utility-Base64-Converter",       "47": "Discord-Token-Ghost-Pinger",
+    "08": "Osint-Email-Checker",             "28": "Utility-Caesar-Cipher",          "48": "Discord-Token-Nuker",
+    "09": "Osint-Email-Breach-Checker",      "29": "Utility-Text-Converter",         "49": "Discord-Token-Disabler",
+    "10": "Osint-Phone-Lookup",              "30": "Utility-Url-Analyzer",           "50": "Discord-Token-Onliner",
+    "11": "Network-Port-Scanner",            "31": "Discord-Server-Information",     "51": "Discord-Token-Image-Changer",
+    "12": "Network-Ip-Pinger",               "32": "Discord-Server-Editor",          "52": "Discord-Token-Bio-Changer",
+    "13": "Network-Traceroute",              "33": "Discord-Server-Scraper",         "53": "Discord-Token-Status-Changer",
+    "14": "Network-Reverse-Dns",             "34": "Discord-Server-Cloner",          "54": "Discord-Token-Generator",
+    "15": "Network-Mac-Lookup",              "35": "Discord-Server-Ban-All",         "55": "Discord-Embed-Creator",
+    "16": "Network-Interface-Information",   "36": "Discord-Server-Kick-All",        "56": "Discord-Injection-Cleaner",
+    "17": "Network-Website-Status",          "37": "Discord-Server-Unban-All",       "57": "Discord-Webhook-Spammer",
+    "18": "Network-Ssl-Checker",             "38": "Discord-Server-Mute-All",        "58": "Discord-Webhook-Information",
+    "19": "Network-Proxy-Checker",           "39": "Discord-Bot-Nuker",              "59": "Discord-Vanity-Url-Sniper",
+    "20": "Network-Wifi-Passwords",          "40": "Discord-Bot-Raider",             "60": "Discord-Snowflake-Decoder",
+    "61": "Roblox-Cookie-Login",             "71": "Soon",                           "81": "Soon",
+    "62": "Roblox-Cookie-Information",       "72": "Soon",                           "82": "Soon",
+    "63": "Roblox-Id-Information",           "73": "Soon",                           "83": "Soon",
+    "64": "Roblox-Username-Information",     "74": "Soon",                           "84": "Soon",
+    "65": "Roblox-Group-Information",        "75": "Soon",                           "85": "Soon",
+    "66": "Roblox-Game-Information",         "76": "Soon",                           "86": "Soon",
+    "67": "Soon",                            "77": "Soon",                           "87": "Soon",
+    "68": "Soon",                            "78": "Soon",                           "88": "Soon",
+    "69": "Soon",                            "79": "Soon",                           "89": "Soon",
+    "70": "Soon",                            "80": "Soon",                           "90": "Soon",
 }
 
-star_required = {"05", "07", "12", "13", "15", "20", "26", "27", "39", "41"}
+star_required = {"04", "07", "09", "11", "20", "22", "33", "34", "35", "39", "45", "48", "61", "62"}
 
 Connection()
 page = LoadPage()
@@ -117,22 +147,21 @@ while True:
         Clear()
         Scroll(Gradient(Menu(page)))
 
-        choice = input(f"{PREFIX}{username_pc}@{name_tool}{SUFFIX} {red}->{reset} ").strip().lower()
+        choice = input(f"{PREFIX}{username_pc}@Buildware{SUFFIX} {red}->{reset} ").strip().lower()
 
-        if choice in ['e', 'exit', 'q', 'quit']:
-            SavePage(page)
-            print(f"{LOADING} Exiting {name_tool}..")
-            time.sleep(0.5)
-            break
+        if choice in ['f', 'feedback']:
+            StartProgram('Feedback.py')
         elif choice in ['n', 'next']:
-            page = 2
+            if page < 3:
+                page += 1
         elif choice in ['b', 'back']:
-            page = 1
+            if page > 1:
+                page -= 1
         elif choice in ['?', 'changelog']:
             StartProgram('Changelog-Version.py')
         elif choice in ['!', 'tool', 'info']:
             StartProgram('Tool-Information.py')
-        elif choice in ['f', 'files', 'extras']:
+        elif choice in ['e', 'extras']:
             StartProgram('Extras-Files.py')
         elif choice in ['p', 'parrot']:
             Clear()

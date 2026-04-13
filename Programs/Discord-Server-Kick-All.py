@@ -19,11 +19,11 @@ try:
     if not server_id:
         ErrorId()
     
-    kick_reason = input(f"{INPUT} Kick Reason {red}({white}optional{red}){white} {red}->{reset} ").strip()
+    kick_reason = input(f"{INPUT} Kick Reason {red}->{reset} ").strip()
     if not kick_reason:
-        kick_reason = "Kicked by Buildware-Tool"
+        kick_reason = "Kicked by Buildware-Tools"
     
-    delay = input(f"{INPUT} Delay Between Kicks {red}({white}seconds{red}){white} {red}->{reset} ").strip()
+    delay = input(f"{INPUT} Delay Between Kicks {red}->{reset} ").strip()
     try:
         delay = float(delay)
         if delay < 0.1:
@@ -73,14 +73,14 @@ try:
                 kicked_count += 1
                 print(f"{SUCCESS} Kicked:{red} {kicked_count:<6} {white}| Username:{red} {username}", reset)
             elif response.status_code == 429:
-                print(f"{ERROR} Rate limited | Username:{red} {username}", reset)
+                print(f"{ERROR} Status:{red} Limited {white}| Username:{red} {username}", reset)
                 time.sleep(2)
             else:
-                print(f"{ERROR} Failed      | Username:{red} {username}", reset)
+                print(f"{ERROR} Status:{red} Failed  {white}| Username:{red} {username}", reset)
             
             time.sleep(delay)
         except:
-            print(f"{ERROR} Error       | Username:{red} {username}", reset)
+            print(f"{ERROR} Status:{red} Error   {white}| Username:{red} {username}", reset)
     
     print(f"\n{INFO} Total kicked:{red} {kicked_count}/{len(members)}", reset)
     

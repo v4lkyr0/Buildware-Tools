@@ -31,7 +31,7 @@ try:
             pass
         return False
 
-    def ChoicePfp():
+    def ChoiceImage(title_text):
         root = tk.Tk()
         root.withdraw()
 
@@ -45,19 +45,19 @@ try:
         else:
             file_types = [("Image Files", "*.png;*.jpg;*.jpeg")]
 
-        file_path = filedialog.askopenfilename(title=f"{name_tool} {version_tool} - Select Profile Picture", filetypes=file_types)
+        file_path = filedialog.askopenfilename(title=f"{name_tool} {version_tool} - {title_text}", filetypes=file_types)
         return file_path
 
-    def ChangePfp(token, pfp_path):
-        print(f"{LOADING} Changing Profile Picture..", reset)
+    def ChangeImage(token, image_path, field, label):
+        print(f"{LOADING} Changing {label}..", reset)
 
         headers = {"Authorization": token, "Content-Type": "application/json", "User-Agent": RandomUserAgents()}
 
         try:
-            with open(pfp_path, "rb") as pfp_file:
-                pfp_data = base64.b64encode(pfp_file.read()).decode('utf-8')
+            with open(image_path, "rb") as image_file:
+                image_data = base64.b64encode(image_file.read()).decode('utf-8')
 
-            ext = Path(pfp_path).suffix.lower()
+            ext = Path(image_path).suffix.lower()
             mime_types = {
                 ".png": "image/png",
                 ".jpg": "image/jpeg",
@@ -66,36 +66,55 @@ try:
             }
             mime_type = mime_types.get(ext, "image/png")
 
-            avatar_data = f"data:{mime_type};base64,{pfp_data}"
-            payload = {"avatar": avatar_data}
+            data_string = f"data:{mime_type};base64,{image_data}"
+            payload = {field: data_string}
 
             try:
                 response = requests.patch("https://discord.com/api/v9/users/@me", headers=headers, json=payload)
                 if response.status_code == 200:
-                    print(f"{SUCCESS} Profile Picture changed!", reset)
+                    print(f"{SUCCESS} {label} changed!", reset)
                     return response.json()
                 else:
-                    print(f"{ERROR} Failed to change Profile Picture!", reset)
+                    print(f"{ERROR} Failed to change {label}!", reset)
                     return None
             except:
-                print(f"{ERROR} Error while trying to change Profile Picture!", reset)
+                print(f"{ERROR} Error while trying to change {label}!", reset)
                 return None
 
         except:
             print(f"{ERROR} Could not read the Image file!", reset)
             return None
 
+    Scroll(f"""
+ {PREFIX}01{SUFFIX} Profile Picture
+ {PREFIX}02{SUFFIX} Banner
+""")
+
+    choice = input(f"{INPUT} Choice {red}->{reset} ").strip().lstrip("0")
+
+    if choice == "1":
+        field = "avatar"
+        label = "Profile Picture"
+        title_text = "Select Profile Picture"
+    elif choice == "2":
+        field = "banner"
+        label = "Banner"
+        title_text = "Select Banner Image"
+    else:
+        ErrorChoice()
+
     print(f"{INPUT} Select Image {red}->", reset)
 
-    pfp_path = ChoicePfp()
-    if not pfp_path:
+    image_path = ChoiceImage(title_text)
+    if not image_path:
         print(f"{ERROR} No Image selected!", reset)
         time.sleep(2)
         Reset()
+        sys.exit()
 
-    print(f"{INFO} Image selected:{red} {pfp_path}", reset)
+    print(f"{INFO} Image selected:{red} {image_path}", reset)
 
-    ChangePfp(token, pfp_path)
+    ChangeImage(token, image_path, field, label)
     Continue()
     Reset()
 

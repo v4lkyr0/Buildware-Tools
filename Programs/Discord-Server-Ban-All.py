@@ -20,11 +20,11 @@ try:
     if not server_id:
         ErrorId()
     
-    ban_reason = input(f"{INPUT} Ban Reason {red}({white}optional{red}){white} {red}->{reset} ").strip()
+    ban_reason = input(f"{INPUT} Ban Reason {red}->{reset} ").strip()
     if not ban_reason:
-        ban_reason = "Banned by Buildware-Tool"
+        ban_reason = "Banned by Buildware-Tools"
     
-    delete_days = input(f"{INPUT} Delete Message History {red}({white}0-7 days{red}){white} {red}->{reset} ").strip()
+    delete_days = input(f"{INPUT} Delete Message History {red}->{reset} ").strip()
     try:
         delete_days = int(delete_days)
         if delete_days < 0 or delete_days > 7:
@@ -32,7 +32,7 @@ try:
     except:
         delete_days = 0
     
-    delay = input(f"{INPUT} Delay Between Bans {red}({white}seconds{red}){white} {red}->{reset} ").strip()
+    delay = input(f"{INPUT} Delay Between Bans {red}->{reset} ").strip()
     try:
         delay = float(delay)
         if delay < 0.1:
@@ -82,14 +82,14 @@ try:
                 banned_count += 1
                 print(f"{SUCCESS} Banned:{red} {banned_count:<6} {white}| Username:{red} {username}", reset)
             elif response.status_code == 429:
-                print(f"{ERROR} Rate limited | Username:{red} {username}", reset)
+                print(f"{ERROR} Status:{red} Limited {white}| Username:{red} {username}", reset)
                 time.sleep(2)
             else:
-                print(f"{ERROR} Failed      | Username:{red} {username}", reset)
+                print(f"{ERROR} Status:{red} Failed  {white}| Username:{red} {username}", reset)
             
             time.sleep(delay)
         except:
-            print(f"{ERROR} Error       | Username:{red} {username}", reset)
+            print(f"{ERROR} Status:{red} Error   {white}| Username:{red} {username}", reset)
     
     print(f"\n{INFO} Total banned:{red} {banned_count}/{len(members)}", reset)
     Continue()

@@ -17,14 +17,14 @@ Connection()
 try:
     token = ChoiceToken()
     
-    server_id = input(f"{INPUT} Server ID {red}->{reset} ")
+    server_id = input(f"{INPUT} Server Id {red}->{reset} ").strip()
     if not server_id:
         ErrorId()
     
     DEFAULT_MUTE_DURATION = 60
     PERMANENT_MUTE = 0
     
-    duration = input(f"{INPUT} Mute Duration {red}({white}minutes, 0 = permanent{red}){white} {red}->{reset} ").strip()
+    duration = input(f"{INPUT} Mute Duration {red}->{reset} ").strip()
     try:
         duration = int(duration)
         if duration < 0:
@@ -35,7 +35,7 @@ try:
     DEFAULT_ACTION_DELAY = 0.5
     MIN_ACTION_DELAY = 0.1
     
-    delay = input(f"{INPUT} Delay Between Mutes {red}({white}seconds{red}){white} {red}->{reset} ").strip()
+    delay = input(f"{INPUT} Delay {red}->{reset} ").strip()
     try:
         delay = float(delay)
         if delay < MIN_ACTION_DELAY:
@@ -98,11 +98,11 @@ try:
                 muted_count += 1
                 print(f"{SUCCESS} Muted:{red} {muted_count:<6} {white}| Username:{red} {username}", reset)
             else:
-                print(f"{ERROR} Failed    {white}| Username:{red} {username}", reset)
+                print(f"{ERROR} Status:{red} Failed  {white}| Username:{red} {username}", reset)
             
             time.sleep(delay)
         except:
-            print(f"{ERROR} Error     {white}| Username:{red} {username}", reset)
+            print(f"{ERROR} Status:{red} Error   {white}| Username:{red} {username}", reset)
     
     print(f"\n{INFO} Total muted:{red} {muted_count}/{len(members)}", reset)
     

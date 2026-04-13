@@ -12,16 +12,16 @@ try:
 except Exception as e:
     MissingModule(e)
 
-Title("Discord Server Nuker")
+Title("Discord Token Nuker")
 Connection()
 CheckGithubStar()
 
 try:
     token = ChoiceToken()
-    new_status = input(f"{INPUT} Custom Status {red}->{reset} ")
+    new_status = input(f"{INPUT} Custom Status {red}->{reset} ").strip()
 
     try:
-        loop_count = int(input(f"{INPUT} Number of Loops {red}->{reset} "))
+        loop_count = int(input(f"{INPUT} Number of Loops {red}->{reset} ").strip())
     except:
         ErrorNumber()
 

@@ -12,20 +12,19 @@ except Exception as e:
 
 Title("Discord Bot Raider")
 Connection()
-CheckGithubStar()
 
 try:
     bot_token = ChoiceBot()
     
-    server_id = input(f"{INPUT} Server ID {red}->{reset} ")
+    server_id = input(f"{INPUT} Server ID {red}->{reset} ").strip()
     if not server_id:
         ErrorId()
     
-    message = input(f"{INPUT} Spam Message {red}->{reset} ")
+    message = input(f"{INPUT} Spam Message {red}->{reset} ").strip()
     if not message:
         ErrorInput()
     
-    message_limit_input = input(f"{INPUT} Total Messages {red}({white}0 for unlimited{red}){white} {red}->{reset} ").strip()
+    message_limit_input = input(f"{INPUT} Total Messages {red}->{reset} ").strip()
     try:
         message_limit = int(message_limit_input)
         if message_limit < 0:
@@ -36,7 +35,7 @@ try:
     DEFAULT_MESSAGE_DELAY = 0.5
     MIN_MESSAGE_DELAY = 0.1
     
-    delay = input(f"{INPUT} Delay Between Messages {red}({white}seconds{red}){white} {red}->{reset} ").strip()
+    delay = input(f"{INPUT} Delay Between Messages {red}->{reset} ").strip()
     try:
         delay = float(delay)
         if delay < MIN_MESSAGE_DELAY:
@@ -88,7 +87,7 @@ try:
                     message_count += 1
                     print(f"{SUCCESS} Messages:{red} {message_count:<6} {white}| Channel:{red} {channel_name}", reset)
                 else:
-                    print(f"{ERROR} Failed    {white}| Channel:{red} {channel_name}", reset)
+                    print(f"{ERROR} Status:{red} Failed  {white}| Channel:{red} {channel_name}", reset)
                 
                 time.sleep(delay)
             
@@ -97,8 +96,8 @@ try:
                 print(f"{INFO} Total messages sent:{red} {message_count}", reset)
                 Continue()
                 Reset()
-            except:
-                pass
+            except Exception as e:
+                print(f"{ERROR} Status:{red} Error   {white}| Error:{red} {e}", reset)
     
     print(f"\n{INFO} Raid completed", reset)
     print(f"{INFO} Total messages sent:{red} {message_count}", reset)

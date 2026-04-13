@@ -7,12 +7,18 @@ from Plugins.Config import *
 try:
     import os
     import shutil
-    import subprocess
+    import psutil
+    import ctypes
 except Exception as e:
     MissingModule(e)
 
 Title("Discord Injection Cleaner")
 Connection()
+
+if platform_pc != "Windows":
+    print(f"{ERROR} This feature is only available on Windows!", reset)
+    Continue()
+    Reset()
 
 PATHS = {
     'Discord': os.path.join(os.getenv('LOCALAPPDATA', ''), 'Discord'),
@@ -74,17 +80,14 @@ def clean_module(module_path):
 
 def kill_discord():
     killed = []
-    for proc in DISCORD_PROCESSES:
+    for proc in psutil.process_iter(['name']):
         try:
-            r = subprocess.run(
-                ['taskkill', '/F', '/IM', proc],
-                capture_output=True, text=True, creationflags=0x08000000
-            )
-            if r.returncode == 0:
-                killed.append(proc.replace('.exe', ''))
-        except Exception:
+            if proc.info['name'] in DISCORD_PROCESSES:
+                proc.kill()
+                killed.append(proc.info['name'].replace('.exe', ''))
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
             pass
-    return killed
+    return list(set(killed))
 
 def restart_discord():
     started = []
@@ -98,10 +101,7 @@ def restart_discord():
         exe = os.path.join(path, 'Update.exe')
         if os.path.exists(exe):
             try:
-                subprocess.Popen(
-                    [exe, '--processStart', name + '.exe'],
-                    creationflags=0x08000000
-                )
+                ctypes.windll.shell32.ShellExecuteW(None, 'open', exe, f'--processStart {name}.exe', None, 0)
                 started.append(name)
             except Exception:
                 continue
@@ -146,7 +146,7 @@ try:
 
     print(f"\n{INFO} Found injection in {red}{len(infected)}{reset} client(s):\n", reset)
     for name, path in infected:
-        print(f"  {red}>{reset} {name}: {red}{path}{reset}")
+        print(f"  {red}>{reset} {name}:{red} {path}{reset}")
 
     confirm = input(f"\n{INPUT} Remove all injections? {YESORNO} {red}->{reset} ").strip().lower()
     if confirm not in ["y", "yes"]:
@@ -157,7 +157,7 @@ try:
     print(f"\n{LOADING} Killing Discord processes..", reset)
     killed = kill_discord()
     if killed:
-        print(f"{SUCCESS} Killed: {red}{', '.join(killed)}{reset}")
+        print(f"{SUCCESS} Killed:{red} {', '.join(killed)}{reset}")
         import time
         time.sleep(2)
 
@@ -188,15 +188,15 @@ try:
         if os.path.exists(pf):
             try:
                 os.remove(pf)
-                print(f"{SUCCESS} Removed persistence file: {red}{pf}{reset}")
+                print(f"{SUCCESS} Removed persistence file:{red} {pf}{reset}")
             except Exception:
-                print(f"{ERROR} Could not remove: {red}{pf}{reset}")
+                print(f"{ERROR} Could not remove:{red} {pf}{reset}")
 
     if killed:
         print(f"\n{LOADING} Restarting Discord..", reset)
         started = restart_discord()
         if started:
-            print(f"{SUCCESS} Restarted: {red}{', '.join(started)}{reset}")
+            print(f"{SUCCESS} Restarted:{red} {', '.join(started)}{reset}")
 
     print(f"\n{SUCCESS} Cleaned {red}{cleaned}/{len(infected)}{reset} client(s). Your Discord is now clean!", reset)
 

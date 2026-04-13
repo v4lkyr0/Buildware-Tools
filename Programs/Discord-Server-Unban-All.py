@@ -16,14 +16,14 @@ Connection()
 try:
     token = ChoiceToken()
     
-    server_id = input(f"{INPUT} Server ID {red}->{reset} ")
+    server_id = input(f"{INPUT} Server Id {red}->{reset} ").strip()
     if not server_id:
         ErrorId()
     
     DEFAULT_ACTION_DELAY = 0.5
     MIN_ACTION_DELAY = 0.1
     
-    delay = input(f"{INPUT} Delay Between Unbans {red}({white}seconds{red}){white} {red}->{reset} ").strip()
+    delay = input(f"{INPUT} Delay {red}->{reset} ").strip()
     try:
         delay = float(delay)
         if delay < MIN_ACTION_DELAY:
@@ -65,11 +65,11 @@ try:
                 unbanned_count += 1
                 print(f"{SUCCESS} Unbanned:{red} {unbanned_count:<6} {white}| Username:{red} {username}", reset)
             else:
-                print(f"{ERROR} Failed      {white}| Username:{red} {username}", reset)
+                print(f"{ERROR} Status:{red} Failed  {white}| Username:{red} {username}", reset)
             
             time.sleep(delay)
         except:
-            print(f"{ERROR} Error       {white}| Username:{red} {username}", reset)
+            print(f"{ERROR} Status:{red} Error   {white}| Username:{red} {username}", reset)
     
     print(f"\n{INFO} Total unbanned:{red} {unbanned_count}/{len(bans)}", reset)
     
