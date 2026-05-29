@@ -1,0 +1,90 @@
+Copyright (c) 2025-2026 v4lkyr0
+
+Permission is granted to use this software under the terms below. If you do
+not agree, do not use or distribute it.
+
+1. Purpose
+
+This software is provided primarily for educational and research use. You
+must comply with applicable laws, regulations, and the terms of service of
+any third-party platforms you use with it (including, without limitation,
+Discord). The author does not condone malicious, unauthorized, or illegal use.
+You are solely responsible for your use of the software.
+
+2. What you may do (non-commercial)
+
+You may, for non-commercial purposes:
+
+- Run, study, and analyze the source code.
+- Copy and modify the software for your own use.
+- Share the software (original or modified) privately or publicly, provided that
+  you meet all conditions in section 3.
+
+3. Conditions on use and sharing
+
+Whenever you copy or share the software (in source or built form), you must:
+
+- Keep all copyright and license notices intact and visible.
+- Clearly credit the original project and author; you must not present the
+  work as solely your own or remove attribution in a way that suggests you are
+  the original author of this project.
+- Include this license (or a verbatim copy) with any distribution.
+- Not use the software or derivatives in a commercial or professional context
+  without prior written permission from the author.
+
+4. What you may not do
+
+Without prior written permission from the author, you must not:
+
+- Sell, rent, sublicense, or otherwise commercialize the software or a
+  substantial part of it, whether modified or not.
+- Remove or alter copyright, attribution, or this license in distributed copies.
+- Distribute binaries without also making the corresponding source available
+  under the same terms (for example in the same package or repository), unless
+  the distribution is only of the unmodified upstream release as published by
+  the author with notices included.
+
+5. Contributions
+
+If you submit contributions (for example pull requests or patches), you grant
+the project maintainer(s) a perpetual, worldwide, non-exclusive license to use,
+reproduce, modify, and distribute those contributions as part of this project,
+under these same terms. You retain your moral rights where applicable; you
+represent that you have the right to grant this license.
+
+For commercial licensing or other questions: v4lkyr_ on Discord.
+
+6. Disclaimer of warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM OR
+RELATED TO THE SOFTWARE OR ITS USE, WHETHER IN CONTRACT, TORT, OR OTHERWISE.
+
+7. Your responsibilities
+
+You are responsible for lawful use, for respecting third-party terms of service,
+and for obtaining authorization before testing or using tools on systems or
+accounts you do not own or are not explicitly permitted to access.
+
+8. Termination
+
+If you materially breach these terms, your rights under this license end. You
+must then stop distributing the software and derivatives, and remove public
+copies you published. You may retain a single private copy solely to document
+what you used, unless prohibited by law. The author may also seek other remedies
+available under applicable law.
+
+9. Severability and governing law
+
+If any provision is held invalid, the remainder stays in effect to the fullest
+extent permitted. This license is governed by the laws of France. Courts in
+France have exclusive jurisdiction, without prejudice to mandatory rules where
+you reside.
+
+10. Versions
+
+This license applies to the version(s) of the software it accompanies. The
+author may publish later versions under different terms; your use of a given
+release is governed by the license file shipped with that release.
