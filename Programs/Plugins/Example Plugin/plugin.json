@@ -1,0 +1,9 @@
+{
+    "buildware" : "3.0",
+    "name"      : "Example Plugin",
+    "author"    : "v4lkyr0",
+    "category"  : "Utilities",
+    "version"   : "1.0",
+    "github"    : "https://github.com/v4lkyr0/Buildware-Tools",
+    "requires"  : []
+}
