@@ -231,7 +231,7 @@ python Setup.py
 
 ## 📈 Star History
 
-<img src="https://api.star-history.com/svg?repos=v4lkyr0/Buildware-Tools&type=Date&theme=dark">
+<img src="https://star-history.dera.page/svg?repos=v4lkyr0/Buildware-Tools&type=Date&theme=dark">
 
 ---
 
